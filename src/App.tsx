@@ -32,74 +32,116 @@ import {
   MessageCircle,
   Instagram,
   Linkedin,
-  Video
+  Video,
+  Activity,
+  ShieldCheck
 } from 'lucide-react';
 
 // --- Data ---
 const categories = [
   {
     id: 'automatizacion',
+    slug: 'sistemas-de-automatizacion-sureste-mexicano',
+    h1: 'Sistemas de Automatización y Control de Accesos en el Sureste Mexicano',
+    metaDescription: 'Optimice la seguridad de su empresa con expertos en automatización y control de accesos en el Sureste. Integramos Zebra y ZKTeco. Cotice su proyecto hoy.',
+    ctaText: 'Cotizar Proyecto de Automatización',
+    altImage: 'Sistema de control de acceso biométrico instalado en zona industrial de Villahermosa',
     title: 'Automatización',
     icon: <Cpu />,
     items: ['Sistemas de Alarmas', 'Cercos Eléctricos', 'Identificación y Credencialización', 'Biométricos', 'Acceso Vehicular', 'Torniquetes y Puertas'],
     brands: 'Honeywell, Resideo, Yonusa, Zebra, ZKTeco',
-    desc: 'Soluciones inteligentes para el control y automatización de accesos y seguridad perimetral. Integramos tecnología de punta para garantizar la protección de sus instalaciones con sistemas robustos y confiables.'
+    desc: 'Soluciones inteligentes para el control y automatización de accesos y seguridad perimetral. Integramos tecnología de punta para garantizar la protección de sus instalaciones en el Sureste Mexicano con sistemas robustos y confiables.'
   },
   {
     id: 'radiocomunicacion',
+    slug: 'sistemas-de-radiocomunicacion-villahermosa',
+    h1: 'Sistemas de Radiocomunicación Industrial en Villahermosa y el Sureste',
+    metaDescription: 'Mejore la comunicación de su empresa con expertos en radiocomunicación en Villahermosa. Soluciones Kenwood y Icom para la industria. Cotice su proyecto hoy.',
+    ctaText: 'Solicitar Diagnóstico de Comunicación',
+    altImage: 'Equipos de radiocomunicación Kenwood operando en instalación industrial en Ciudad del Carmen',
     title: 'Radiocomunicaciones',
     icon: <Radio />,
     items: ['Radios Comerciales', 'Amplificadores', 'Antenas', 'Repetidores', 'Accesorios Originales'],
     brands: 'Icom, Kenwood',
-    desc: 'Sistemas de comunicación eficientes y seguros para entornos industriales, comerciales y de emergencia. Aseguramos conectividad constante en cualquier situación crítica.'
+    desc: 'Sistemas de comunicación eficientes y seguros para entornos industriales, comerciales y de emergencia en Villahermosa y Ciudad del Carmen. Aseguramos conectividad constante en cualquier situación crítica.'
   },
   {
     id: 'torres',
+    slug: 'torres-de-telecomunicaciones-villahermosa',
+    h1: 'Instalación de Torres de Telecomunicaciones en Villahermosa y sureste de México',
+    metaDescription: 'Especialistas en diseño e instalación de torres de telecomunicaciones en Villahermosa y el Sureste Mexicano. Infraestructura robusta para su red. Cotice su proyecto hoy.',
+    ctaText: 'Cotizar Proyecto de Infraestructura',
+    altImage: 'Torre de telecomunicaciones instalada en sitio industrial en Villahermosa',
     title: 'Torres de Telecomunicaciones',
     icon: <TowerControl />,
     items: ['Arriostradas (9 a 90 metros)', 'Auto-soportadas', 'Mástiles', 'Alojamiento de Infraestructura', 'Implementación y Monitoreo'],
     brands: 'Diseño de Ingeniería',
-    desc: 'Diseño, instalación y mantenimiento de infraestructura para telecomunicaciones. Ofrecemos soluciones estructurales adaptadas a las necesidades específicas de cobertura y capacidad.'
+    desc: 'Diseño, instalación y mantenimiento de infraestructura para telecomunicaciones en la Zona Industrial de Villahermosa. Ofrecemos soluciones estructurales adaptadas a las necesidades específicas de cobertura y capacidad en el Sureste.'
   },
   {
     id: 'gps',
-    title: 'GPS y Monitoreo',
+    slug: 'rastreo-gps-monitoreo-flotas-sureste',
+    h1: 'Sistemas de Rastreo GPS y Monitoreo de Flotas en el Sureste Mexicano',
+    metaDescription: 'Controle sus vehículos con plataformas de rastreo GPS y telemetría en el Sureste. Soluciones Teltonika y Ruptela para empresas. Cotice su proyecto hoy.',
+    ctaText: 'Solicitar Demo de Plataforma GPS',
+    altImage: 'Monitoreo de flotillas mediante plataforma telemétrica GPS en el Sureste Mexicano',
+    title: 'GPS',
     icon: <MapPin />,
     items: ['Plataforma Telemétrica', 'Seguridad Personal', 'GPS y Control de Combustible', 'Bloqueo de Encendido'],
     brands: 'Teltonika, Ruptela',
-    desc: 'Rastreo y gestión de flotas en tiempo real. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos y personal en movimiento.'
+    desc: 'Rastreo y gestión de flotas en tiempo real para empresas en el Sureste Mexicano. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos y personal en movimiento.'
   },
   {
     id: 'videovigilancia',
+    slug: 'sistemas-de-videovigilancia-industrial-sur-de-mexico',
+    h1: 'Sistemas de Videovigilancia Industrial en el Sur de México',
+    metaDescription: 'Proteja sus instalaciones con sistemas de videovigilancia CCTV de alta definición en el Sur de México. Integramos Hikvision y Dahua. Cotice su proyecto hoy.',
+    ctaText: 'Cotizar Proyecto de Seguridad Industrial',
+    altImage: 'Cámaras de videovigilancia PTZ instaladas en zona industrial del Sureste Mexicano',
     title: 'Videovigilancia',
     icon: <Cctv />,
-    items: ['Software CMS y VMS', 'Videoportero', 'Cámaras Bala y Domo', 'Cámaras PTZ', 'Videograbadores'],
+    items: ['Videoportero', 'Cámaras Bala y Domo', 'Cámaras PTZ', 'Videograbadores'],
     brands: 'Hikvision, Provision ISR, Dahua',
-    desc: 'Sistemas de circuito cerrado de televisión (CCTV) de alta definición. Monitoreo continuo y almacenamiento seguro para la prevención y análisis de incidentes.'
+    desc: 'Sistemas de circuito cerrado de televisión (CCTV) de alta definición para la industria en el Sur de México. Monitoreo continuo y almacenamiento seguro para la prevención y análisis de incidentes.'
   },
   {
     id: 'enlaces',
+    slug: 'enlaces-dedicados-inalambricos-villahermosa',
+    h1: 'Enlaces Dedicados Inalámbricos PtP y PtMP en Villahermosa',
+    metaDescription: 'Conectividad empresarial de alto rendimiento con enlaces inalámbricos en Villahermosa y el Sureste. Soluciones Ubiquiti y Mimosa. Solicite diagnóstico hoy.',
+    ctaText: 'Solicitar Diagnóstico de Red',
+    altImage: 'Antenas para enlaces dedicados inalámbricos instaladas en torre de telecomunicaciones en Villahermosa',
     title: 'Enlaces PtP y PtMP',
     icon: <Wifi />,
     items: ['Enlaces Backhaul (PtP)', 'Enlaces para alto Desempeño', 'Zonas urbanas y suburbanas', 'Frecuencias con y sin licencia'],
     brands: 'Ubiquiti, Mimosa',
-    desc: 'Conectividad inalámbrica de alta velocidad y confiabilidad. Diseñamos redes punto a punto y punto a multipunto para extender su red corporativa o proveer acceso a internet.'
+    desc: 'Conectividad inalámbrica de alta velocidad y confiabilidad en Villahermosa y zonas aledañas. Diseñamos redes punto a punto y punto a multipunto para extender su red corporativa o proveer acceso a internet.'
   },
   {
-    id: 'fuego',
-    title: 'Detección de Fuego',
-    icon: <Flame />,
-    items: ['Detectores de Humo', 'Detector de Temperatura', 'Paneles contra Incendios', 'Notificación y Voceo', 'Señalamientos'],
-    brands: 'Honeywell',
-    desc: 'Sistemas tempranos de detección de incendios. Protegemos vidas y activos mediante tecnología de alerta rápida y precisa, cumpliendo con las normativas de seguridad.'
+    id: 'telemetria',
+    slug: 'sistemas-de-telemetria-industrial-sureste',
+    h1: 'Sistemas de Telemetría Industrial en el Sureste Mexicano',
+    metaDescription: 'Monitoreo y control remoto de procesos industriales con sistemas de telemetría en el Sureste. Optimice su operación. Cotice su proyecto hoy.',
+    ctaText: 'Cotizar Proyecto de Telemetría',
+    altImage: 'Sistema de telemetría y control industrial operando en el Sureste Mexicano',
+    title: 'Telemetría',
+    icon: <Activity />,
+    items: ['Monitoreo de Variables', 'Control Remoto', 'Adquisición de Datos (SCADA)', 'Sensores Industriales', 'Automatización de Procesos'],
+    brands: 'Siemens, Schneider Electric, Rockwell',
+    desc: 'Sistemas avanzados de telemetría para la medición, monitoreo y control remoto de variables físicas y químicas en tiempo real, optimizando la toma de decisiones.'
   },
   {
     id: 'audiovideo',
+    slug: 'soluciones-audiovisuales-corporativas-sureste',
+    h1: 'Soluciones Audiovisuales y Videowall para Corporativos en el Sureste',
+    metaDescription: 'Equipe sus salas de control y corporativos con soluciones audiovisuales profesionales en el Sureste Mexicano. Sistemas Sonos. Cotice su proyecto hoy.',
+    ctaText: 'Cotizar Solución Audiovisual',
+    altImage: 'Sistema de videowall y audio profesional instalado en sala de control en el Sureste',
     title: 'Audio y Video',
     icon: <MonitorPlay />,
     items: ['Voceo y Audio', 'Videowall', 'Extensores y Divisores', 'Repetidores', 'Sistemas de Evacuación por Voz'],
     brands: 'Sonos',
-    desc: 'Soluciones audiovisuales profesionales para salas de control, corporativos y espacios comerciales. Comunicación clara y visualización de alto impacto.'
+    desc: 'Soluciones audiovisuales profesionales para salas de control, corporativos y espacios comerciales en el Sureste Mexicano. Comunicación clara y visualización de alto impacto.'
   }
 ];
 
@@ -361,7 +403,7 @@ const SolutionsSection = () => {
             <motion.div 
               key={i}
               whileHover={{ y: -5 }}
-              onClick={() => navigate(`/solucion/${cat.id}`)}
+              onClick={() => navigate(`/servicios/${cat.slug}`)}
               className="glass-card p-6 rounded-2xl border-t-4 border-t-brand-red flex flex-col h-full cursor-pointer hover:bg-white/10 transition-colors group"
             >
               <div className="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
@@ -453,7 +495,7 @@ const BrokerTelecomSection = () => {
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-brand-red p-6 rounded-2xl shadow-2xl text-white">
-              <p className="text-3xl font-black mb-1">96.5%</p>
+              <p className="text-3xl font-black mb-1">99%</p>
               <p className="text-xs font-bold uppercase tracking-widest opacity-80">SLA Garantizado</p>
             </div>
           </div>
@@ -463,54 +505,62 @@ const BrokerTelecomSection = () => {
   );
 };
 
+const CiberseguridadSection = () => {
+  const navigate = useNavigate();
+  return (
+    <section className="py-24 bg-brand-gray border-b border-white/10 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-1/2 h-full bg-black/20 -skew-x-12 -translate-x-1/4"></div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="order-2 lg:order-1 relative">
+            <div className="aspect-video rounded-3xl overflow-hidden border-8 border-white/10 shadow-2xl">
+              <img 
+                src="/ciberseguridadimagen.webp" 
+                alt="Centro de Operaciones de Ciberseguridad" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+                onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/cybersecurity/1000/600"; }}
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-6 bg-brand-red p-6 rounded-2xl shadow-2xl text-white">
+              <p className="text-3xl font-black mb-1">24/7</p>
+              <p className="text-xs font-bold uppercase tracking-widest opacity-80">Monitoreo Continuo</p>
+            </div>
+          </div>
+          <div className="order-1 lg:order-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6">
+              <ShieldCheck className="w-3 h-3" /> División Especializada
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black mb-6">
+              CIBER<span className="text-brand-red">SEGURIDAD</span>
+            </h2>
+            <p className="text-white/70 text-lg mb-8 leading-relaxed">
+              Protección integral para su infraestructura digital. Prevención de amenazas, análisis de vulnerabilidades y respuesta a incidentes para garantizar la continuidad de su negocio.
+            </p>
+            <button 
+              onClick={() => navigate('/ciberseguridad')}
+              className="bg-brand-red text-white hover:bg-red-700 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer shadow-lg shadow-brand-red/20"
+            >
+              VER SERVICIOS DE CIBERSEGURIDAD
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const ContactForm = () => {
   const location = useLocation();
-  const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', service: '', message: '' });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const serviceParam = params.get('service');
-    if (serviceParam) {
-      setFormData(prev => ({ ...prev, service: serviceParam }));
-    }
     if (location.hash === '#contacto') {
       setTimeout(() => {
         document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
   }, [location]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: '' });
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newErrors: Record<string, string> = {};
-    if (!formData.name) newErrors.name = 'El nombre es requerido';
-    if (!formData.email) {
-      newErrors.email = 'El correo es requerido';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Correo inválido';
-    }
-    if (!formData.service) newErrors.service = 'Seleccione un servicio de interés';
-    
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-    } else {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ name: '', company: '', email: '', phone: '', service: '', message: '' });
-        alert('Formulario enviado con éxito. Nos pondremos en contacto pronto.');
-      }, 1500);
-    }
-  };
 
   return (
     <section id="contacto" className="py-24 bg-brand-gray">
@@ -522,7 +572,7 @@ const ContactForm = () => {
               <span className="text-brand-red">TU PROYECTO</span>
             </h2>
             <p className="text-white/50 text-lg mb-12">
-              Estamos listos para diseñar la solución que necesitas. Completa el formulario o contáctanos directamente a través de nuestros canales oficiales.
+              Estamos listos para diseñar la solución que necesitas. Agenda una reunión directamente en nuestro calendario o contáctanos a través de nuestros canales oficiales.
             </p>
 
             <div className="space-y-8">
@@ -570,59 +620,19 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <div className="bg-brand-dark p-10 rounded-3xl border border-white/10 shadow-2xl h-fit">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40">Nombre Completo *</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} className={`w-full bg-white/5 border ${errors.name ? 'border-brand-red' : 'border-white/10'} rounded-xl px-4 py-3 focus:outline-none focus:border-brand-red transition-colors`} placeholder="Ej. Juan Pérez" />
-                  {errors.name && <p className="text-brand-red text-xs mt-1">{errors.name}</p>}
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40">Empresa</label>
-                  <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-red transition-colors" placeholder="Nombre de tu empresa" />
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40">Correo Electrónico *</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} className={`w-full bg-white/5 border ${errors.email ? 'border-brand-red' : 'border-white/10'} rounded-xl px-4 py-3 focus:outline-none focus:border-brand-red transition-colors`} placeholder="juan@empresa.com" />
-                  {errors.email && <p className="text-brand-red text-xs mt-1">{errors.email}</p>}
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40">Teléfono</label>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-red transition-colors" placeholder="993 123 4567" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-white/40">Servicio de Interés *</label>
-                <div className="relative">
-                  <select name="service" value={formData.service} onChange={handleChange} className={`w-full bg-brand-dark border ${errors.service ? 'border-brand-red' : 'border-white/10'} rounded-xl px-4 py-3 focus:outline-none focus:border-brand-red transition-colors appearance-none text-white`}>
-                    <option value="" disabled className="bg-brand-dark text-white/50">Selecciona una opción</option>
-                    <option value="Automatización" className="bg-brand-dark text-white">Automatización</option>
-                    <option value="Radiocomunicaciones" className="bg-brand-dark text-white">Radiocomunicaciones</option>
-                    <option value="Torres de Telecomunicaciones" className="bg-brand-dark text-white">Torres de Telecomunicaciones</option>
-                    <option value="GPS y Monitoreo" className="bg-brand-dark text-white">GPS y Monitoreo</option>
-                    <option value="Videovigilancia" className="bg-brand-dark text-white">Videovigilancia</option>
-                    <option value="Enlaces PtP y PtMP" className="bg-brand-dark text-white">Enlaces PtP y PtMP</option>
-                    <option value="Detección de Fuego" className="bg-brand-dark text-white">Detección de Fuego</option>
-                    <option value="Audio y Video" className="bg-brand-dark text-white">Audio y Video</option>
-                    <option value="Broker Telecom" className="bg-brand-dark text-white">Broker Telecom</option>
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white/50">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                  </div>
-                </div>
-                {errors.service && <p className="text-brand-red text-xs mt-1">{errors.service}</p>}
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-white/40">Mensaje / Detalles</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-red transition-colors" placeholder="Cuéntanos brevemente tus necesidades..."></textarea>
-              </div>
-              <button type="submit" disabled={isSubmitted} className="w-full bg-brand-red hover:bg-red-700 disabled:opacity-50 text-white py-4 rounded-xl font-black text-lg transition-all transform active:scale-95 shadow-lg shadow-brand-red/20">
-                {isSubmitted ? 'ENVIANDO...' : 'ENVIAR SOLICITUD'}
-              </button>
-            </form>
+          <div className="bg-brand-dark p-2 rounded-3xl border border-white/10 shadow-2xl h-fit overflow-hidden">
+            {/* 
+              NOTA: Para cambiar la URL de Microsoft Bookings en el futuro, 
+              solo debes reemplazar el atributo 'src' de este iframe con tu nuevo enlace.
+            */}
+            <iframe 
+              src="https://outlook.office.com/bookwithme/user/d60d482122d6426d8e38f7285ba9b2a7@corp-mx.com?anonymous&ep=plink" 
+              width="100%" 
+              height="800" 
+              style={{ border: 0, borderRadius: '1.5rem', backgroundColor: 'white' }} 
+              allowFullScreen 
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -655,7 +665,7 @@ const Footer = () => {
   return (
     <footer className="bg-brand-dark border-t border-white/10 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid md:grid-cols-3 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-brand-red flex items-center justify-center rounded-lg rotate-45">
@@ -685,18 +695,6 @@ const Footer = () => {
                 <Video className="w-5 h-5" />
               </a>
             </div>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-brand-red">Áreas de Servicio</h4>
-            <ul className="space-y-4 text-sm text-white/40">
-              <li>Tabasco</li>
-              <li>Sur de Veracruz</li>
-              <li>Chiapas</li>
-              <li>Campeche</li>
-              <li>Mérida</li>
-              <li>Cancún</li>
-            </ul>
           </div>
 
           <div>
@@ -734,7 +732,7 @@ const Footer = () => {
 const WhatsAppButton = () => {
   return (
     <a
-      href="https://wa.me/529933511828"
+      href="https://wa.me/5219933420755"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#128C7E] transition-colors hover:scale-110 transform duration-200"
@@ -851,7 +849,7 @@ const BrokerTelecomPage = () => {
                 </div>
                 <div className="flex items-center gap-4 bg-brand-red/10 p-4 rounded-xl border border-brand-red/20">
                   <CheckCircle2 className="text-brand-red" />
-                  <span className="font-bold text-xl text-brand-red">96.5% SLA</span>
+                  <span className="font-bold text-xl text-brand-red">99% SLA</span>
                 </div>
               </div>
             </div>
@@ -881,12 +879,146 @@ const BrokerTelecomPage = () => {
   );
 };
 
+const CiberseguridadPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="pt-32 pb-24 min-h-screen bg-brand-gray">
+      <div className="max-w-5xl mx-auto px-6">
+        <Link to="/" className="inline-flex items-center gap-2 text-white/50 hover:text-brand-red transition-colors mb-8">
+          <ArrowRight className="w-4 h-4 rotate-180" /> Volver al inicio
+        </Link>
+        
+        <div className="glass-card p-10 rounded-3xl border-t-4 border-t-brand-red">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/10 border border-brand-red/20 text-brand-red text-xs font-bold tracking-widest uppercase mb-4">
+                <ShieldCheck className="w-3 h-3" /> División Especializada
+              </div>
+              <h1 className="text-4xl md:text-6xl font-black">
+                CIBER<span className="text-brand-red">SEGURIDAD</span>
+              </h1>
+            </div>
+            <div className="bg-brand-dark p-4 rounded-xl border border-white/10 text-right">
+              <p className="text-xs text-white/40 uppercase tracking-widest mb-1">Certificación</p>
+              <p className="font-mono font-bold text-white/90">ISO 27001</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="bg-brand-dark p-8 rounded-2xl border border-white/10">
+              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-red mb-6">
+                <Shield className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Protección de Endpoints</h3>
+              <p className="text-white/60 leading-relaxed">
+                Seguridad avanzada para todos los dispositivos de su red, previniendo malware, ransomware y ataques de día cero.
+              </p>
+            </div>
+            <div className="bg-brand-dark p-8 rounded-2xl border border-white/10">
+              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-red mb-6">
+                <Lock className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Seguridad Perimetral</h3>
+              <p className="text-white/60 leading-relaxed">
+                Firewalls de próxima generación (NGFW) y sistemas de prevención de intrusos (IPS) para proteger los límites de su red.
+              </p>
+            </div>
+            <div className="bg-brand-dark p-8 rounded-2xl border border-white/10">
+              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-red mb-6">
+                <Activity className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Análisis de Vulnerabilidades</h3>
+              <p className="text-white/60 leading-relaxed">
+                Evaluaciones continuas para identificar y mitigar riesgos en su infraestructura antes de que sean explotados.
+              </p>
+            </div>
+            <div className="bg-brand-dark p-8 rounded-2xl border border-white/10">
+              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-red mb-6">
+                <AlertTriangle className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Respuesta a Incidentes</h3>
+              <p className="text-white/60 leading-relaxed">
+                Equipo de expertos listos para actuar de inmediato ante cualquier brecha de seguridad, minimizando el impacto.
+              </p>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-12 mb-12 overflow-hidden">
+            <h3 className="text-2xl font-bold mb-8 text-center">Alianzas Estratégicas en Ciberseguridad</h3>
+            <div className="relative w-full flex overflow-hidden mb-8 mask-edges">
+              <div className="flex gap-6 animate-marquee whitespace-nowrap">
+                {[...Array(4)].map((_, i) => (
+                  <React.Fragment key={i}>
+                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img src="/sophos.png" alt="Sophos" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <span className="hidden text-black font-bold text-sm">Partner <span className="text-blue-600">Sophos</span></span>
+                    </div>
+                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img src="/endpointprotector.png" alt="Endpoint Protector" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <span className="hidden text-black font-bold text-sm">Partner <span className="text-green-600">Endpoint Protector</span></span>
+                    </div>
+                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img src="/eset.png" alt="ESET" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <span className="hidden text-black font-bold text-sm">Partner <span className="text-teal-600">ESET</span></span>
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+            <p className="text-center text-white/70 text-lg">
+              Integramos las tecnologías más avanzadas del mercado para ofrecer una defensa robusta y adaptativa.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 bg-brand-dark p-8 rounded-2xl border border-white/10">
+            <div>
+              <h3 className="text-2xl font-bold mb-6 text-brand-red">Centro de Operaciones</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl">
+                  <ShieldCheck className="text-brand-red" />
+                  <span className="font-bold">Certificación ISO 27001</span>
+                </div>
+                <div className="flex items-center gap-4 bg-brand-red/10 p-4 rounded-xl border border-brand-red/20">
+                  <CheckCircle2 className="text-brand-red" />
+                  <span className="font-bold text-xl text-brand-red">Respuesta Inmediata</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-6 text-brand-red">Contacto Directo</h3>
+              <ul className="space-y-4 text-white/80">
+                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-brand-red" /> ciberseguridad@r2a.com.mx</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 55 9337 3832</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 993 351 1828</li>
+                <li className="flex items-center gap-3"><MessageCircle className="w-5 h-5 text-green-500" /> +52 1 993 342 0755</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/?service=Ciberseguridad#contacto" className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg shadow-brand-red/20">
+              COTIZAR SERVICIO DE CIBERSEGURIDAD
+            </Link>
+            <a href="/brochure-ciberseguridad.pdf" download className="inline-flex items-center justify-center gap-2 bg-white text-brand-dark hover:bg-gray-200 px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg">
+              <Download className="w-5 h-5" /> DESCARGAR BROCHURE
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const HomePage = () => {
   return (
     <>
       <Hero />
       <AboutSection />
       <BrokerTelecomSection />
+      <CiberseguridadSection />
       <SolutionsSection />
       <ContactForm />
     </>
@@ -895,12 +1027,22 @@ const HomePage = () => {
 
 const SolutionPage = () => {
   const location = useLocation();
-  const id = location.pathname.split('/').pop();
-  const category = categories.find(c => c.id === id);
+  const slug = location.pathname.split('/').pop();
+  const category = categories.find(c => c.slug === slug);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+    if (category) {
+      document.title = `${category.title} | R2A México`;
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.setAttribute('name', 'description');
+        document.head.appendChild(metaDesc);
+      }
+      metaDesc.setAttribute('content', category.metaDescription);
+    }
+  }, [slug, category]);
 
   if (!category) {
     return (
@@ -915,29 +1057,40 @@ const SolutionPage = () => {
 
   return (
     <div className="pt-32 pb-24 min-h-screen">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <Link to="/#soluciones" className="inline-flex items-center gap-2 text-white/50 hover:text-brand-red transition-colors mb-8">
           <ArrowRight className="w-4 h-4 rotate-180" /> Volver a soluciones
         </Link>
         
         <div className="glass-card p-10 rounded-3xl border-t-4 border-t-brand-red">
-          <div className="w-20 h-20 bg-brand-red/10 rounded-2xl flex items-center justify-center text-brand-red mb-8">
-            {React.cloneElement(category.icon as React.ReactElement, { className: 'w-10 h-10' })}
+          <div className="flex flex-col md:flex-row gap-8 items-start mb-10">
+            <div className="flex-1">
+              <div className="w-20 h-20 bg-brand-red/10 rounded-2xl flex items-center justify-center text-brand-red mb-8">
+                {React.cloneElement(category.icon as React.ReactElement, { className: 'w-10 h-10' })}
+              </div>
+              <h1 className="text-4xl md:text-5xl font-black mb-6 leading-tight">{category.h1}</h1>
+              <p className="text-xl text-white/70 leading-relaxed">
+                {category.desc}
+              </p>
+            </div>
+            <div className="w-full md:w-1/3 shrink-0">
+              <img 
+                src={`/${category.id}.webp`} 
+                alt={category.altImage} 
+                className="w-full h-64 object-cover rounded-2xl shadow-xl border border-white/10"
+                onError={(e) => { e.currentTarget.src = `https://picsum.photos/seed/${category.id}/600/400`; }}
+              />
+            </div>
           </div>
-          
-          <h1 className="text-4xl md:text-5xl font-black mb-6">{category.title}</h1>
-          <p className="text-xl text-white/70 leading-relaxed mb-10">
-            {category.desc}
-          </p>
           
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Shield className="text-brand-red" /> Servicios Incluidos
-              </h3>
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                <Shield className="text-brand-red" /> Beneficios y Servicios Específicos
+              </h2>
               <ul className="space-y-4">
                 {category.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-3 text-white/80 bg-white/5 p-4 rounded-xl border border-white/5">
+                  <li key={j} className="flex items-start gap-3 text-white/80 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
                     <CheckCircle2 className="w-5 h-5 text-brand-red shrink-0" />
                     <span className="font-medium">{item}</span>
                   </li>
@@ -946,19 +1099,19 @@ const SolutionPage = () => {
             </div>
             
             <div>
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <CheckCircle2 className="text-brand-red" /> Marcas que Manejamos
-              </h3>
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                <CheckCircle2 className="text-brand-red" /> Integración con Marcas Líderes
+              </h2>
               <div className="bg-brand-dark p-6 rounded-xl border border-white/10">
                 <p className="text-white/80 leading-relaxed">
-                  Trabajamos con los líderes de la industria para garantizar la máxima calidad y confiabilidad:
+                  Trabajamos con los líderes de la industria para garantizar la máxima calidad, confiabilidad y transferir autoridad a su infraestructura:
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4 items-center">
                   {category.brands.split(', ').map(brand => (
                     <div key={brand} className="bg-white/5 px-4 py-2 rounded-xl flex items-center justify-center h-12 min-w-[100px] border border-white/10">
                       <img 
                         src={`/${brand.toLowerCase().replace(/\s+/g, '')}.png`} 
-                        alt={brand} 
+                        alt={`Logo de ${brand}`} 
                         className="max-h-8 max-w-full object-contain filter brightness-0 invert opacity-80"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
@@ -973,7 +1126,7 @@ const SolutionPage = () => {
               
               <div className="mt-8">
                 <Link to={`/?service=${encodeURIComponent(category.title)}#contacto`} className="w-full bg-brand-red hover:bg-red-700 text-white py-4 rounded-xl font-black text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-red/20 cursor-pointer">
-                  COTIZAR ESTA SOLUCIÓN
+                  {category.ctaText}
                 </Link>
               </div>
             </div>
@@ -994,8 +1147,9 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/solucion/:id" element={<SolutionPage />} />
+            <Route path="/servicios/:slug" element={<SolutionPage />} />
             <Route path="/broker-telecom" element={<BrokerTelecomPage />} />
+            <Route path="/ciberseguridad" element={<CiberseguridadPage />} />
           </Routes>
         </main>
         <Footer />
