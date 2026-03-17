@@ -41,6 +41,60 @@ import {
 } from 'lucide-react';
 
 // --- Data ---
+const brandDomains: Record<string, string> = {
+  'Honeywell': 'honeywell.com',
+  'Resideo': 'resideo.com',
+  'Yonusa': 'yonusa.com',
+  'Zebra': 'zebra.com',
+  'ZKTeco': 'zkteco.com',
+  'Icom': 'icomamerica.com',
+  'Kenwood': 'kenwood.com',
+  'Teltonika': 'teltonika-networks.com',
+  'Ruptela': 'ruptela.com',
+  'Hikvision': 'hikvision.com',
+  'Provision ISR': 'provision-isr.com',
+  'Dahua': 'dahuasecurity.com',
+  'Ubiquiti': 'ui.com',
+  'Mimosa': 'mimosa.co',
+  'Siemens': 'siemens.com',
+  'Schneider Electric': 'se.com',
+  'Rockwell': 'rockwellautomation.com',
+  'Sonos': 'sonos.com'
+};
+
+const BrandLogo = ({ brand, className = "" }: { brand: string, className?: string }) => {
+  const domain = brandDomains[brand];
+  
+  if (!domain) {
+    return <span className={`text-sm font-bold text-white/80 ${className}`}>{brand}</span>;
+  }
+
+  return (
+    <div className={`flex items-center justify-center ${className}`}>
+      <img 
+        src={`https://logo.clearbit.com/${domain}`} 
+        alt={brand} 
+        referrerPolicy="no-referrer"
+        className="max-h-6 max-w-[80px] object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        onError={(e) => {
+          const img = e.currentTarget;
+          // Si Clearbit falla (común por adblockers), intentamos con el favicon de Google
+          if (!img.src.includes('google.com')) {
+            img.src = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+            // Quitamos el filtro blanco para que el icono se vea en sus colores originales
+            img.classList.remove('filter', 'brightness-0', 'invert');
+          } else {
+            // Si también falla Google, mostramos el texto
+            img.style.display = 'none';
+            img.nextElementSibling?.classList.remove('hidden');
+          }
+        }}
+      />
+      <span className="hidden text-sm font-bold text-white/80">{brand}</span>
+    </div>
+  );
+};
+
 const categories = [
   {
     id: 'automatizacion',
@@ -436,18 +490,7 @@ const SolutionsSection = () => {
                     {[...Array(2)].map((_, loopIndex) => (
                       <React.Fragment key={loopIndex}>
                         {cat.brands.split(', ').map((brand, bIndex) => (
-                          <div key={`${loopIndex}-${bIndex}`} className="flex items-center justify-center shrink-0 px-2">
-                            <img 
-                              src={`/${brand.toLowerCase().replace(/\s+/g, '')}.png`} 
-                              alt={brand} 
-                              className="max-h-6 max-w-[80px] object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
-                              onError={(e) => {
-                                e.currentTarget.style.display = 'none';
-                                e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                              }}
-                            />
-                            <span className="hidden text-sm font-bold text-white/80">{brand}</span>
-                          </div>
+                          <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 px-2" />
                         ))}
                       </React.Fragment>
                     ))}
@@ -779,11 +822,9 @@ const Footer = () => {
 
           <div>
             <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-brand-red">Marcas Asociadas</h4>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-4 items-center">
               {['Honeywell', 'ZKTeco', 'Kenwood', 'Hikvision', 'Ubiquiti', 'Sonos', 'Teltonika'].map(brand => (
-                <span key={brand} className="bg-white/5 px-3 py-1 rounded-full text-xs text-white/60 border border-white/10">
-                  {brand}
-                </span>
+                <BrandLogo key={brand} brand={brand} className="opacity-60 hover:opacity-100 transition-opacity" />
               ))}
             </div>
           </div>
@@ -888,17 +929,62 @@ const BrokerTelecomPage = () => {
               <div className="flex gap-6 animate-marquee whitespace-nowrap">
                 {[...Array(4)].map((_, i) => (
                   <React.Fragment key={i}>
-                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img src="/alestra.png" alt="Alestra" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
-                      <span className="hidden text-black font-bold text-sm">Integrador Autorizado <span className="text-blue-600">alestra</span></span>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img 
+                        src="https://logo.clearbit.com/alestra.mx" 
+                        alt="Alestra" 
+                        referrerPolicy="no-referrer"
+                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        onError={(e) => { 
+                          const img = e.currentTarget;
+                          if (!img.src.includes('google.com')) {
+                            img.src = 'https://www.google.com/s2/favicons?domain=alestra.mx&sz=128';
+                            img.classList.remove('filter', 'brightness-0', 'invert');
+                          } else {
+                            img.style.display = 'none'; 
+                            img.nextElementSibling?.classList.remove('hidden'); 
+                          }
+                        }} 
+                      />
+                      <span className="hidden text-white/80 font-bold text-sm">Integrador Autorizado <span className="text-white">alestra</span></span>
                     </div>
-                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img src="/metrocarrier.png" alt="MetroCarrier" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
-                      <span className="hidden text-black font-bold text-sm">Socio Comercial <span className="text-blue-500">MetroCarrier</span></span>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img 
+                        src="https://logo.clearbit.com/metrocarrier.com.mx" 
+                        alt="MetroCarrier" 
+                        referrerPolicy="no-referrer"
+                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        onError={(e) => { 
+                          const img = e.currentTarget;
+                          if (!img.src.includes('google.com')) {
+                            img.src = 'https://www.google.com/s2/favicons?domain=metrocarrier.com.mx&sz=128';
+                            img.classList.remove('filter', 'brightness-0', 'invert');
+                          } else {
+                            img.style.display = 'none'; 
+                            img.nextElementSibling?.classList.remove('hidden'); 
+                          }
+                        }} 
+                      />
+                      <span className="hidden text-white/80 font-bold text-sm">Socio Comercial <span className="text-white">MetroCarrier</span></span>
                     </div>
-                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img src="/net2phone.png" alt="net2phone" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
-                      <span className="hidden text-black font-bold text-sm"><span className="text-blue-600">net2phone</span> Partner Autorizado</span>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img 
+                        src="https://logo.clearbit.com/net2phone.com" 
+                        alt="net2phone" 
+                        referrerPolicy="no-referrer"
+                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        onError={(e) => { 
+                          const img = e.currentTarget;
+                          if (!img.src.includes('google.com')) {
+                            img.src = 'https://www.google.com/s2/favicons?domain=net2phone.com&sz=128';
+                            img.classList.remove('filter', 'brightness-0', 'invert');
+                          } else {
+                            img.style.display = 'none'; 
+                            img.nextElementSibling?.classList.remove('hidden'); 
+                          }
+                        }} 
+                      />
+                      <span className="hidden text-white/80 font-bold text-sm"><span className="text-white">net2phone</span> Partner Autorizado</span>
                     </div>
                   </React.Fragment>
                 ))}
@@ -1022,17 +1108,62 @@ const CiberseguridadPage = () => {
               <div className="flex gap-6 animate-marquee whitespace-nowrap">
                 {[...Array(4)].map((_, i) => (
                   <React.Fragment key={i}>
-                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img src="/sophos.png" alt="Sophos" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
-                      <span className="hidden text-black font-bold text-sm">Partner <span className="text-blue-600">Sophos</span></span>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img 
+                        src="https://logo.clearbit.com/sophos.com" 
+                        alt="Sophos" 
+                        referrerPolicy="no-referrer"
+                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        onError={(e) => { 
+                          const img = e.currentTarget;
+                          if (!img.src.includes('google.com')) {
+                            img.src = 'https://www.google.com/s2/favicons?domain=sophos.com&sz=128';
+                            img.classList.remove('filter', 'brightness-0', 'invert');
+                          } else {
+                            img.style.display = 'none'; 
+                            img.nextElementSibling?.classList.remove('hidden'); 
+                          }
+                        }} 
+                      />
+                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Sophos</span></span>
                     </div>
-                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img src="/endpointprotector.png" alt="Endpoint Protector" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
-                      <span className="hidden text-black font-bold text-sm">Partner <span className="text-green-600">Endpoint Protector</span></span>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img 
+                        src="https://logo.clearbit.com/endpointprotector.com" 
+                        alt="Endpoint Protector" 
+                        referrerPolicy="no-referrer"
+                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        onError={(e) => { 
+                          const img = e.currentTarget;
+                          if (!img.src.includes('google.com')) {
+                            img.src = 'https://www.google.com/s2/favicons?domain=endpointprotector.com&sz=128';
+                            img.classList.remove('filter', 'brightness-0', 'invert');
+                          } else {
+                            img.style.display = 'none'; 
+                            img.nextElementSibling?.classList.remove('hidden'); 
+                          }
+                        }} 
+                      />
+                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Endpoint Protector</span></span>
                     </div>
-                    <div className="bg-white px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img src="/eset.png" alt="ESET" className="max-h-full max-w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
-                      <span className="hidden text-black font-bold text-sm">Partner <span className="text-teal-600">ESET</span></span>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img 
+                        src="https://logo.clearbit.com/eset.com" 
+                        alt="ESET" 
+                        referrerPolicy="no-referrer"
+                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        onError={(e) => { 
+                          const img = e.currentTarget;
+                          if (!img.src.includes('google.com')) {
+                            img.src = 'https://www.google.com/s2/favicons?domain=eset.com&sz=128';
+                            img.classList.remove('filter', 'brightness-0', 'invert');
+                          } else {
+                            img.style.display = 'none'; 
+                            img.nextElementSibling?.classList.remove('hidden'); 
+                          }
+                        }} 
+                      />
+                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">ESET</span></span>
                     </div>
                   </React.Fragment>
                 ))}
@@ -1264,16 +1395,7 @@ const SolutionPage = () => {
                 <div className="mt-6 flex flex-wrap gap-4 items-center">
                   {category.brands.split(', ').map(brand => (
                     <div key={brand} className="bg-white/5 px-4 py-2 rounded-xl flex items-center justify-center h-12 min-w-[100px] border border-white/10">
-                      <img 
-                        src={`/${brand.toLowerCase().replace(/\s+/g, '')}.png`} 
-                        alt={`Logo de ${brand}`} 
-                        className="max-h-8 max-w-full object-contain filter brightness-0 invert opacity-80"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                        }}
-                      />
-                      <span className="hidden text-white font-bold text-sm tracking-wide">{brand}</span>
+                      <BrandLogo brand={brand} className="opacity-80 hover:opacity-100 transition-opacity" />
                     </div>
                   ))}
                 </div>
