@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
@@ -34,7 +34,10 @@ import {
   Linkedin,
   Video,
   Activity,
-  ShieldCheck
+  ShieldCheck,
+  Lock,
+  Server,
+  ShieldAlert
 } from 'lucide-react';
 
 // --- Data ---
@@ -553,6 +556,27 @@ const CiberseguridadSection = () => {
 
 const ContactForm = () => {
   const location = useLocation();
+  const [activeMap, setActiveMap] = useState<'villahermosa' | 'tuxtla'>('villahermosa');
+  const [isIframeVisible, setIsIframeVisible] = useState(false);
+  const iframeContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsIframeVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (iframeContainerRef.current) {
+      observer.observe(iframeContainerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (location.hash === '#contacto') {
@@ -607,32 +631,78 @@ const ContactForm = () => {
             </div>
 
             <div className="mt-12">
-              <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4">Nuestra Ubicación</h3>
-              <iframe 
-                src="https://maps.google.com/maps?q=R2A+Mexico,+Villahermosa&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                width="100%" 
-                height="250" 
-                style={{ border: 0, borderRadius: '1rem' }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                <h3 className="text-sm font-bold uppercase tracking-widest text-white/40">Nuestra Ubicación</h3>
+                <div className="flex gap-2 bg-white/5 p-1 rounded-lg w-fit">
+                  <button
+                    onClick={() => setActiveMap('villahermosa')}
+                    className={`px-4 py-2 text-xs font-bold rounded-md transition-colors ${activeMap === 'villahermosa' ? 'bg-brand-red text-white' : 'text-white/50 hover:text-white'}`}
+                  >
+                    Villahermosa
+                  </button>
+                  <button
+                    onClick={() => setActiveMap('tuxtla')}
+                    className={`px-4 py-2 text-xs font-bold rounded-md transition-colors ${activeMap === 'tuxtla' ? 'bg-brand-red text-white' : 'text-white/50 hover:text-white'}`}
+                  >
+                    Tuxtla Gutiérrez
+                  </button>
+                </div>
+              </div>
+              
+              {activeMap === 'villahermosa' ? (
+                <iframe 
+                  src="https://maps.google.com/maps?q=R2A+Mexico,+Villahermosa&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" 
+                  height="250" 
+                  style={{ border: 0, borderRadius: '1rem' }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              ) : (
+                <div className="relative">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.1505076087765!2d-93.17680651522299!3d16.769185942803816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd934cf2ade75%3A0x52e7711cd6e36952!2sR2A%20M%C3%A9xico!5e0!3m2!1ses!2sus!4v1773788574847!5m2!1ses!2sus" 
+                    width="100%" 
+                    height="250" 
+                    style={{ border: 0, borderRadius: '1rem' }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                  <a 
+                    href="https://maps.app.goo.gl/XPNT5wsJJXzkkdSx6" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="absolute bottom-4 right-4 bg-brand-dark/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xs font-bold border border-white/10 hover:bg-brand-red transition-colors flex items-center gap-2"
+                  >
+                    Abrir en Google Maps
+                  </a>
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="bg-brand-dark p-2 rounded-3xl border border-white/10 shadow-2xl h-fit overflow-hidden">
+          <div ref={iframeContainerRef} className="bg-brand-dark p-2 rounded-3xl border border-white/10 shadow-2xl h-fit overflow-hidden min-h-[800px] flex items-center justify-center">
             {/* 
               NOTA: Para cambiar la URL de Microsoft Bookings en el futuro, 
               solo debes reemplazar el atributo 'src' de este iframe con tu nuevo enlace.
             */}
-            <iframe 
-              src="https://outlook.office.com/bookwithme/user/d60d482122d6426d8e38f7285ba9b2a7@corp-mx.com?anonymous&ep=plink" 
-              width="100%" 
-              height="800" 
-              style={{ border: 0, borderRadius: '1.5rem', backgroundColor: 'white' }} 
-              allowFullScreen 
-              loading="lazy"
-            ></iframe>
+            {isIframeVisible ? (
+              <iframe 
+                src="https://outlook.office.com/bookwithme/user/d60d482122d6426d8e38f7285ba9b2a7@corp-mx.com?anonymous&ep=plink" 
+                width="100%" 
+                height="800" 
+                style={{ border: 0, borderRadius: '1.5rem', backgroundColor: 'white' }} 
+                allowFullScreen 
+                loading="lazy"
+              ></iframe>
+            ) : (
+              <div className="text-white/50 flex flex-col items-center">
+                <div className="w-8 h-8 border-4 border-brand-red border-t-transparent rounded-full animate-spin mb-4"></div>
+                <p>Cargando agenda...</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -1012,6 +1082,90 @@ const CiberseguridadPage = () => {
   );
 };
 
+const IsoCertificationSection = () => {
+  return (
+    <section className="py-24 bg-white text-brand-dark relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
+          <div className="md:w-1/3 flex justify-center order-2 md:order-1">
+            <div className="bg-white p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center w-full max-w-[320px] aspect-square relative">
+              <div className="absolute inset-0 bg-slate-100 rounded-3xl transform rotate-3 -z-10"></div>
+              <img 
+                src="/iso27001.png" 
+                alt="Certificación ISO 27001" 
+                className="max-h-full max-w-full object-contain"
+                onError={(e) => { 
+                  e.currentTarget.style.display = 'none'; 
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
+                }}
+              />
+              <div className="hidden flex-col items-center text-center">
+                <ShieldCheck className="w-20 h-20 text-brand-dark mb-4" />
+                <span className="font-black text-2xl text-brand-dark">ISO 27001</span>
+                <span className="text-gray-500 font-medium mt-2">Certificado Oficial</span>
+              </div>
+            </div>
+          </div>
+          <div className="md:w-2/3 order-1 md:order-2">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-brand-dark font-bold text-sm mb-6">
+              <ShieldCheck className="w-4 h-4" />
+              <span>Seguridad de la Información</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-6 text-brand-dark leading-tight">
+              Certificados en <span className="text-brand-red">ISO 27001</span>
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed mb-10">
+              En R2A México, la protección de tus datos es nuestra máxima prioridad. Contamos con la certificación internacional ISO 27001, garantizando que nuestros procesos, operaciones y servicios cumplen con los estándares globales más estrictos.
+            </p>
+            
+            <div className="grid sm:grid-cols-2 gap-8">
+              <div className="flex gap-4">
+                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                  <Lock className="w-6 h-6 text-brand-red" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-brand-dark mb-1">Confidencialidad</h4>
+                  <p className="text-gray-600 text-sm">Acceso restringido solo a personal autorizado.</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-4">
+                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-6 h-6 text-brand-red" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-brand-dark mb-1">Integridad</h4>
+                  <p className="text-gray-600 text-sm">Datos exactos, completos y libres de alteraciones.</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-4">
+                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                  <Server className="w-6 h-6 text-brand-red" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-brand-dark mb-1">Disponibilidad</h4>
+                  <p className="text-gray-600 text-sm">Información accesible siempre que la necesites.</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-4">
+                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                  <ShieldAlert className="w-6 h-6 text-brand-red" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-brand-dark mb-1">Gestión de Riesgos</h4>
+                  <p className="text-gray-600 text-sm">Identificación y mitigación proactiva de amenazas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const HomePage = () => {
   return (
     <>
@@ -1019,6 +1173,7 @@ const HomePage = () => {
       <AboutSection />
       <BrokerTelecomSection />
       <CiberseguridadSection />
+      <IsoCertificationSection />
       <SolutionsSection />
       <ContactForm />
     </>

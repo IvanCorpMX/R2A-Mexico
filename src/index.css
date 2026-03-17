@@ -5,9 +5,9 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-brand-red: #E3001B;
-  --color-brand-dark: #111E3E;
-  --color-brand-gray: #1A264A;
+  --color-brand-red: #D80027;
+  --color-brand-dark: #0F172A;
+  --color-brand-gray: #1E293B;
   --color-brand-silver: #C0C0C0;
 }
 
@@ -21,11 +21,11 @@
 }
 
 .metallic-gradient {
-  background: linear-gradient(135deg, #111E3E 0%, #1A264A 50%, #111E3E 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
 }
 
 .red-glow {
-  box-shadow: 0 0 20px rgba(227, 0, 27, 0.2);
+  box-shadow: 0 0 20px rgba(216, 0, 39, 0.2);
 }
 
 .glass-card {
