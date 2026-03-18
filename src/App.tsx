@@ -660,15 +660,6 @@ const ContactForm = () => {
                   <p className="text-xl font-bold">ventas@r2a.com.mx</p>
                 </div>
               </div>
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-red">
-                  <Globe />
-                </div>
-                <div>
-                  <p className="text-xs text-white/40 uppercase tracking-widest">Sitio Web</p>
-                  <p className="text-xl font-bold">www.r2a.com.mx</p>
-                </div>
-              </div>
             </div>
 
             <div className="mt-12">
@@ -776,13 +767,19 @@ const Footer = () => {
   return (
     <footer className="bg-brand-dark border-t border-white/10 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-brand-red flex items-center justify-center rounded-lg rotate-45">
-                <Shield className="text-white -rotate-45 w-5 h-5" />
-              </div>
-              <span className="text-xl font-extrabold tracking-tighter">
+              <img 
+                src="/logo.png" 
+                alt="R2A México" 
+                className="h-10 object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <span className="hidden text-xl font-extrabold tracking-tighter">
                 R2A<span className="text-brand-red">MÉXICO</span>
               </span>
             </div>
@@ -817,21 +814,15 @@ const Footer = () => {
               <li className="flex items-center gap-2"><Globe className="w-4 h-4" /> www.r2a.com.mx</li>
             </ul>
           </div>
-
-          <div>
-            <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-brand-red">Marcas Asociadas</h4>
-            <div className="flex flex-wrap gap-4 items-center">
-              {['Honeywell', 'ZKTeco', 'Kenwood', 'Hikvision', 'Ubiquiti', 'Sonos', 'Teltonika'].map(brand => (
-                <BrandLogo key={brand} brand={brand} className="opacity-60 hover:opacity-100 transition-opacity" />
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-white/20 text-xs">
             © {new Date().getFullYear()} R2A México S.A. de C.V. Todos los derechos reservados.
           </p>
+          <Link to="/aviso-de-privacidad" className="text-white/40 text-xs hover:text-white transition-colors">
+            Aviso de Privacidad
+          </Link>
         </div>
       </div>
     </footer>
@@ -1023,9 +1014,6 @@ const BrokerTelecomPage = () => {
             <Link to="/?service=Broker%20Telecom#contacto" className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg shadow-brand-red/20">
               COTIZAR SERVICIO TELECOM
             </Link>
-            <a href="/brochure-telecom.pdf" download className="inline-flex items-center justify-center gap-2 bg-white text-brand-dark hover:bg-gray-200 px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg">
-              <Download className="w-5 h-5" /> DESCARGAR BROCHURE
-            </a>
           </div>
         </div>
       </div>
@@ -1201,9 +1189,6 @@ const CiberseguridadPage = () => {
             <Link to="/?service=Ciberseguridad#contacto" className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg shadow-brand-red/20">
               COTIZAR SERVICIO DE CIBERSEGURIDAD
             </Link>
-            <a href="/brochure-ciberseguridad.pdf" download className="inline-flex items-center justify-center gap-2 bg-white text-brand-dark hover:bg-gray-200 px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg">
-              <Download className="w-5 h-5" /> DESCARGAR BROCHURE
-            </a>
           </div>
         </div>
       </div>
@@ -1412,6 +1397,71 @@ const SolutionPage = () => {
   );
 };
 
+const PrivacyPolicyPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="pt-32 pb-24 bg-brand-dark min-h-screen">
+      <div className="max-w-4xl mx-auto px-6">
+        <h1 className="text-4xl md:text-5xl font-black mb-8">AVISO DE <span className="text-brand-red">PRIVACIDAD</span></h1>
+        
+        <div className="prose prose-invert max-w-none text-white/70 space-y-6">
+          <p><strong>Última actualización:</strong> 10/03/2026</p>
+          
+          <p>
+            R2A México, empresa especializada en soluciones de seguridad electrónica, videovigilancia, control de accesos, radiocomunicación y telecomunicaciones es responsable del tratamiento de los datos personales que recaba.
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Datos personales recabados</h2>
+          <p>Podemos recabar:</p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Nombre</li>
+            <li>Empresa</li>
+            <li>Teléfono</li>
+            <li>Correo electrónico</li>
+            <li>Dirección del sitio donde se realizará la instalación</li>
+            <li>Información técnica relacionada con proyectos de seguridad</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Finalidades</h2>
+          
+          <h3 className="text-xl font-bold text-white mt-6 mb-3">Primarias</h3>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Elaboración de cotizaciones</li>
+            <li>Diseño de soluciones de seguridad</li>
+            <li>Prestación de servicios de instalación, mantenimiento o soporte</li>
+            <li>Seguimiento comercial y atención a clientes</li>
+          </ul>
+
+          <h3 className="text-xl font-bold text-white mt-6 mb-3">Secundarias</h3>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Envío de información comercial</li>
+            <li>Invitaciones a demostraciones o presentaciones de tecnología</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Transferencia de datos</h2>
+          <p>
+            Los datos podrán compartirse con empresas del grupo CORP-MX para fines operativos o comerciales relacionados con los servicios solicitados.
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Derechos ARCO</h2>
+          <p>
+            Podrá ejercer sus derechos ARCO enviando una solicitud a:<br />
+            <a href="mailto:ventas@r2a.com.mx" className="text-brand-red hover:underline">ventas@r2a.com.mx</a>
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Cambios al aviso</h2>
+          <p>
+            Cualquier modificación será publicada en nuestro sitio web.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Main App ---
 
 export default function App() {
@@ -1425,6 +1475,7 @@ export default function App() {
             <Route path="/servicios/:slug" element={<SolutionPage />} />
             <Route path="/broker-telecom" element={<BrokerTelecomPage />} />
             <Route path="/ciberseguridad" element={<CiberseguridadPage />} />
+            <Route path="/aviso-de-privacidad" element={<PrivacyPolicyPage />} />
           </Routes>
         </main>
         <Footer />
