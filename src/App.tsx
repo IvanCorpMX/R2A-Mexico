@@ -428,14 +428,12 @@ const AboutSection = () => {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <img src="/objetivo1.webp" alt="Equipo R2A" className="rounded-2xl object-cover h-64 w-full" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team1/400/500"; }} />
-              <img src="/objetivo2.webp" alt="Instalación R2A" className="rounded-2xl object-cover h-48 w-full" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team2/400/400"; }} />
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-6">
+              <img src="/objetivo1.webp" alt="Equipo R2A" className="rounded-2xl object-cover h-[400px] w-full shadow-2xl" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team1/400/600"; }} />
             </div>
-            <div className="space-y-4 pt-12">
-              <img src="/objetivo3.webp" alt="Tecnología R2A" className="rounded-2xl object-cover h-48 w-full" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team3/400/400"; }} />
-              <img src="/objetivo4.webp" alt="Monitoreo R2A" className="rounded-2xl object-cover h-64 w-full" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team4/400/500"; }} />
+            <div className="space-y-6 pt-16">
+              <img src="/objetivo2.webp" alt="Instalación R2A" className="rounded-2xl object-cover h-[400px] w-full shadow-2xl" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team2/400/600"; }} />
             </div>
           </div>
         </div>
