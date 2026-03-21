@@ -41,53 +41,18 @@ import {
 } from 'lucide-react';
 
 // --- Data ---
-const brandDomains: Record<string, string> = {
-  'Honeywell': 'honeywell.com',
-  'Resideo': 'resideo.com',
-  'Yonusa': 'yonusa.com',
-  'Zebra': 'zebra.com',
-  'ZKTeco': 'zkteco.com',
-  'Icom': 'icomamerica.com',
-  'Kenwood': 'kenwood.com',
-  'Teltonika': 'teltonika-networks.com',
-  'Ruptela': 'ruptela.com',
-  'Hikvision': 'hikvision.com',
-  'Provision ISR': 'provision-isr.com',
-  'Dahua': 'dahuasecurity.com',
-  'Ubiquiti': 'ui.com',
-  'Mimosa': 'mimosa.co',
-  'Siemens': 'siemens.com',
-  'Schneider Electric': 'se.com',
-  'Rockwell': 'rockwellautomation.com',
-  'Sonos': 'sonos.com'
-};
-
 const BrandLogo = ({ brand, className = "" }: { brand: string, className?: string }) => {
-  const domain = brandDomains[brand];
+  const filename = brand.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-') + '.png';
   
-  if (!domain) {
-    return <span className={`text-sm font-bold text-white/80 ${className}`}>{brand}</span>;
-  }
-
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <img 
-        src={`https://logo.clearbit.com/${domain}`} 
-        alt={brand} 
-        referrerPolicy="no-referrer"
-        className="max-h-6 max-w-[80px] object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+        src={`/logos/${filename}`} 
+        alt={brand}
+        className="h-full w-auto object-contain max-h-full opacity-70 hover:opacity-100 transition-opacity"
         onError={(e) => {
-          const img = e.currentTarget;
-          // Si Clearbit falla (común por adblockers), intentamos con el favicon de Google
-          if (!img.src.includes('google.com')) {
-            img.src = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-            // Quitamos el filtro blanco para que el icono se vea en sus colores originales
-            img.classList.remove('filter', 'brightness-0', 'invert');
-          } else {
-            // Si también falla Google, mostramos el texto
-            img.style.display = 'none';
-            img.nextElementSibling?.classList.remove('hidden');
-          }
+          e.currentTarget.style.display = 'none';
+          e.currentTarget.nextElementSibling?.classList.remove('hidden');
         }}
       />
       <span className="hidden text-sm font-bold text-white/80">{brand}</span>
@@ -107,7 +72,8 @@ const categories = [
     icon: <Cpu />,
     items: ['Sistemas de Alarmas', 'Cercos Eléctricos', 'Identificación y Credencialización', 'Biométricos', 'Acceso Vehicular', 'Torniquetes y Puertas'],
     brands: 'Honeywell, Resideo, Yonusa, Zebra, ZKTeco',
-    desc: 'Soluciones inteligentes para el control y automatización de accesos y seguridad perimetral. Integramos tecnología de punta para garantizar la protección de sus instalaciones en el Sureste Mexicano con sistemas robustos y confiables.'
+    desc: 'Soluciones inteligentes para el control y automatización de accesos y seguridad perimetral. Integramos tecnología de punta para garantizar la protección de sus instalaciones en el Sureste Mexicano con sistemas robustos y confiables.',
+    cardDesc: 'Soluciones inteligentes para el control y automatización de accesos. Integramos tecnología de punta para garantizar la protección total de sus instalaciones.'
   },
   {
     id: 'radiocomunicacion',
@@ -120,7 +86,8 @@ const categories = [
     icon: <Radio />,
     items: ['Radios Comerciales', 'Amplificadores', 'Antenas', 'Repetidores', 'Accesorios Originales'],
     brands: 'Icom, Kenwood',
-    desc: 'Sistemas de comunicación eficientes y seguros para entornos industriales, comerciales y de emergencia en Villahermosa y Ciudad del Carmen. Aseguramos conectividad constante en cualquier situación crítica.'
+    desc: 'Sistemas de comunicación eficientes y seguros para entornos industriales, comerciales y de emergencia en Villahermosa y Ciudad del Carmen. Aseguramos conectividad constante en cualquier situación crítica.',
+    cardDesc: 'Sistemas de comunicación eficientes y seguros para entornos industriales y comerciales. Aseguramos conectividad constante en cualquier situación crítica.'
   },
   {
     id: 'torres',
@@ -133,7 +100,8 @@ const categories = [
     icon: <TowerControl />,
     items: ['Arriostradas (9 a 90 metros)', 'Auto-soportadas', 'Mástiles', 'Alojamiento de Infraestructura', 'Implementación y Monitoreo'],
     brands: 'Diseño de Ingeniería',
-    desc: 'Diseño, instalación y mantenimiento de infraestructura para telecomunicaciones en la Zona Industrial de Villahermosa. Ofrecemos soluciones estructurales adaptadas a las necesidades específicas de cobertura y capacidad en el Sureste.'
+    desc: 'Diseño, instalación y mantenimiento de infraestructura para telecomunicaciones en la Zona Industrial de Villahermosa. Ofrecemos soluciones estructurales adaptadas a las necesidades específicas de cobertura y capacidad en el Sureste.',
+    cardDesc: 'Diseño, instalación y mantenimiento de infraestructura para telecomunicaciones. Ofrecemos soluciones estructurales adaptadas a sus necesidades de cobertura y capacidad.'
   },
   {
     id: 'gps',
@@ -146,7 +114,8 @@ const categories = [
     icon: <MapPin />,
     items: ['Plataforma Telemétrica', 'Seguridad Personal', 'GPS y Control de Combustible', 'Bloqueo de Encendido'],
     brands: 'Teltonika, Ruptela',
-    desc: 'Rastreo y gestión de flotas en tiempo real para empresas en el Sureste Mexicano. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos y personal en movimiento.'
+    desc: 'Rastreo y gestión de flotas en tiempo real para empresas en el Sureste Mexicano. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos y personal en movimiento.',
+    cardDesc: 'Rastreo y gestión de flotas en tiempo real. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos en movimiento.'
   },
   {
     id: 'videovigilancia',
@@ -157,9 +126,10 @@ const categories = [
     altImage: 'Cámaras de videovigilancia PTZ instaladas en zona industrial del Sureste Mexicano',
     title: 'Videovigilancia',
     icon: <Cctv />,
-    items: ['Videoportero', 'Cámaras Bala y Domo', 'Cámaras PTZ', 'Videograbadores'],
+    items: ['Cámaras Bala y Domo', 'Cámaras PTZ', 'Videograbadores'],
     brands: 'Hikvision, Provision ISR, Dahua',
-    desc: 'Sistemas de circuito cerrado de televisión (CCTV) de alta definición para la industria en el Sur de México. Monitoreo continuo y almacenamiento seguro para la prevención y análisis de incidentes.'
+    desc: 'Sistemas de circuito cerrado de televisión (CCTV) de alta definición para la industria en el Sur de México. Monitoreo continuo y almacenamiento seguro para la prevención y análisis de incidentes.',
+    cardDesc: 'Sistemas de circuito cerrado de televisión (CCTV) de alta definición. Monitoreo continuo y almacenamiento seguro para la prevención y análisis de incidentes.'
   },
   {
     id: 'enlaces',
@@ -168,11 +138,12 @@ const categories = [
     metaDescription: 'Conectividad empresarial de alto rendimiento con enlaces inalámbricos en Villahermosa y el Sureste. Soluciones Ubiquiti y Mimosa. Solicite diagnóstico hoy.',
     ctaText: 'Solicitar Diagnóstico de Red',
     altImage: 'Antenas para enlaces dedicados inalámbricos instaladas en torre de telecomunicaciones en Villahermosa',
-    title: 'Enlaces PtP y PtMP',
+    title: 'Enlaces ptp',
     icon: <Wifi />,
-    items: ['Enlaces Backhaul (PtP)', 'Enlaces para alto Desempeño', 'Zonas urbanas y suburbanas', 'Frecuencias con y sin licencia'],
+    items: ['Enlaces Backhaul (PtP)', 'Frecuencias con y sin licencia'],
     brands: 'Ubiquiti, Mimosa',
-    desc: 'Conectividad inalámbrica de alta velocidad y confiabilidad en Villahermosa y zonas aledañas. Diseñamos redes punto a punto y punto a multipunto para extender su red corporativa o proveer acceso a internet.'
+    desc: 'Conectividad inalámbrica de alta velocidad y confiabilidad en Villahermosa y zonas aledañas. Diseñamos redes punto a punto y punto a multipunto para extender su red corporativa o proveer acceso a internet.',
+    cardDesc: 'Conectividad inalámbrica de alta velocidad y confiabilidad. Diseñamos redes punto a punto y punto a multipunto para extender su red corporativa sin límites.'
   },
   {
     id: 'telemetria',
@@ -185,7 +156,8 @@ const categories = [
     icon: <Activity />,
     items: ['Monitoreo de Variables', 'Control Remoto', 'Adquisición de Datos (SCADA)', 'Sensores Industriales', 'Automatización de Procesos'],
     brands: 'Siemens, Schneider Electric, Rockwell',
-    desc: 'Sistemas avanzados de telemetría para la medición, monitoreo y control remoto de variables físicas y químicas en tiempo real, optimizando la toma de decisiones.'
+    desc: 'Sistemas avanzados de telemetría para la medición, monitoreo y control remoto de variables físicas y químicas en tiempo real, optimizando la toma de decisiones.',
+    cardDesc: 'Sistemas avanzados para la medición, monitoreo y control remoto de variables en tiempo real, optimizando la toma de decisiones operativas.'
   },
   {
     id: 'audiovideo',
@@ -198,7 +170,8 @@ const categories = [
     icon: <MonitorPlay />,
     items: ['Voceo y Audio', 'Videowall', 'Extensores y Divisores', 'Repetidores', 'Sistemas de Evacuación por Voz'],
     brands: 'Sonos',
-    desc: 'Soluciones audiovisuales profesionales para salas de control, corporativos y espacios comerciales en el Sureste Mexicano. Comunicación clara y visualización de alto impacto.'
+    desc: 'Soluciones audiovisuales profesionales para salas de control, corporativos y espacios comerciales en el Sureste Mexicano. Comunicación clara y visualización de alto impacto.',
+    cardDesc: 'Soluciones audiovisuales profesionales para salas de control, corporativos y espacios comerciales. Comunicación clara y visualización de alto impacto.'
   }
 ];
 
@@ -369,19 +342,16 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-32 md:pt-40">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-2xl"
+          className="max-w-2xl mt-16 md:mt-0"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/10 border border-brand-red/20 text-brand-red text-xs font-bold tracking-widest uppercase mb-4">
-            <Shield className="w-3 h-3" /> Seguridad Electrónica
-          </div>
           <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
-            PROTEGEMOS LO MÁS <br />
-            <span className="text-brand-red">IMPORTANTE PARA USTED</span>
+            SEGURIDAD, CONTROL Y <br />
+            <span className="text-brand-red">MONITOREO EN TIEMPO REAL</span>
           </h1>
           <p className="text-xl text-white/60 mb-12 leading-relaxed">
             R2A México S.A. de C.V. inicia operaciones en el año 2014 con el propósito de asegurar su entorno, ofrecemos soluciones en seguridad electrónica a nivel físico y lógico.
@@ -468,27 +438,17 @@ const SolutionsSection = () => {
                 {cat.title}
                 <ChevronRight className="w-5 h-5 text-white/30 group-hover:text-brand-red transition-colors" />
               </h3>
-              <ul className="space-y-2 mb-6 flex-grow">
-                {cat.items.slice(0, 3).map((item, j) => (
-                  <li key={j} className="flex items-start gap-2 text-white/60 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-brand-red shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-                {cat.items.length > 3 && (
-                  <li className="text-xs text-brand-red font-medium mt-2">
-                    + {cat.items.length - 3} más...
-                  </li>
-                )}
-              </ul>
+              <p className="text-white/60 text-sm mb-6 flex-grow leading-relaxed">
+                {cat.cardDesc}
+              </p>
               <div className="mt-auto pt-4 border-t border-white/10">
                 <p className="text-xs text-white/40 uppercase tracking-wider font-semibold mb-2">Marcas destacadas:</p>
-                <div className="relative w-full flex overflow-hidden mask-edges h-8">
-                  <div className="flex gap-4 animate-marquee whitespace-nowrap items-center">
+                <div className="relative w-full flex overflow-hidden mask-edges h-20">
+                  <div className="flex gap-6 animate-marquee whitespace-nowrap items-center">
                     {[...Array(2)].map((_, loopIndex) => (
                       <React.Fragment key={loopIndex}>
                         {cat.brands.split(', ').map((brand, bIndex) => (
-                          <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 px-2" />
+                          <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 px-3 h-16" />
                         ))}
                       </React.Fragment>
                     ))}
@@ -539,7 +499,7 @@ const BrokerTelecomSection = () => {
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-brand-red p-6 rounded-2xl shadow-2xl text-white">
-              <p className="text-3xl font-black mb-1">99%</p>
+              <p className="text-3xl font-black mb-1">99.9%</p>
               <p className="text-xs font-bold uppercase tracking-widest opacity-80">SLA Garantizado</p>
             </div>
           </div>
@@ -648,7 +608,6 @@ const ContactForm = () => {
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Llámanos</p>
                   <p className="text-xl font-bold">+52 993 351 1828</p>
-                  <p className="text-xl font-bold">+52 993 342 2134</p>
                 </div>
               </div>
               <div className="flex items-center gap-6">
@@ -994,7 +953,7 @@ const BrokerTelecomPage = () => {
                 </div>
                 <div className="flex items-center gap-4 bg-brand-red/10 p-4 rounded-xl border border-brand-red/20">
                   <CheckCircle2 className="text-brand-red" />
-                  <span className="font-bold text-xl text-brand-red">99% SLA</span>
+                  <span className="font-bold text-xl text-brand-red">99.9% SLA</span>
                 </div>
               </div>
             </div>
@@ -1096,60 +1055,51 @@ const CiberseguridadPage = () => {
                   <React.Fragment key={i}>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="https://logo.clearbit.com/sophos.com" 
+                        src="/logos/sophos.png" 
                         alt="Sophos" 
-                        referrerPolicy="no-referrer"
-                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
-                          const img = e.currentTarget;
-                          if (!img.src.includes('google.com')) {
-                            img.src = 'https://www.google.com/s2/favicons?domain=sophos.com&sz=128';
-                            img.classList.remove('filter', 'brightness-0', 'invert');
-                          } else {
-                            img.style.display = 'none'; 
-                            img.nextElementSibling?.classList.remove('hidden'); 
-                          }
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
                         }} 
                       />
                       <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Sophos</span></span>
                     </div>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="https://logo.clearbit.com/endpointprotector.com" 
+                        src="/logos/endpoint-protector.png" 
                         alt="Endpoint Protector" 
-                        referrerPolicy="no-referrer"
-                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
-                          const img = e.currentTarget;
-                          if (!img.src.includes('google.com')) {
-                            img.src = 'https://www.google.com/s2/favicons?domain=endpointprotector.com&sz=128';
-                            img.classList.remove('filter', 'brightness-0', 'invert');
-                          } else {
-                            img.style.display = 'none'; 
-                            img.nextElementSibling?.classList.remove('hidden'); 
-                          }
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
                         }} 
                       />
                       <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Endpoint Protector</span></span>
                     </div>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="https://logo.clearbit.com/eset.com" 
+                        src="/logos/eset.png" 
                         alt="ESET" 
-                        referrerPolicy="no-referrer"
-                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
-                          const img = e.currentTarget;
-                          if (!img.src.includes('google.com')) {
-                            img.src = 'https://www.google.com/s2/favicons?domain=eset.com&sz=128';
-                            img.classList.remove('filter', 'brightness-0', 'invert');
-                          } else {
-                            img.style.display = 'none'; 
-                            img.nextElementSibling?.classList.remove('hidden'); 
-                          }
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
                         }} 
                       />
                       <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">ESET</span></span>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
+                      <img 
+                        src="/logos/fortinet.png" 
+                        alt="Fortinet" 
+                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
+                        onError={(e) => { 
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
+                        }} 
+                      />
+                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Fortinet</span></span>
                     </div>
                   </React.Fragment>
                 ))}
@@ -1202,12 +1152,12 @@ const IsoCertificationSection = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
           <div className="md:w-1/3 flex justify-center order-2 md:order-1">
-            <div className="bg-white p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center w-full max-w-[320px] aspect-square relative">
+            <div className="bg-white p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center w-full max-w-[400px] relative">
               <div className="absolute inset-0 bg-slate-100 rounded-3xl transform rotate-3 -z-10"></div>
               <img 
                 src="/iso27001.png" 
                 alt="Certificación ISO 27001" 
-                className="max-h-full max-w-full object-contain"
+                className="w-full h-auto object-contain"
                 onError={(e) => { 
                   e.currentTarget.style.display = 'none'; 
                   e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
