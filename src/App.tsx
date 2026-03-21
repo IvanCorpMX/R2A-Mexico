@@ -71,7 +71,7 @@ const categories = [
     title: 'Automatización',
     icon: <Cpu />,
     items: ['Sistemas de Alarmas', 'Cercos Eléctricos', 'Identificación y Credencialización', 'Biométricos', 'Acceso Vehicular', 'Torniquetes y Puertas'],
-    brands: 'Honeywell, Resideo, Yonusa, Zebra, ZKTeco',
+    brands: 'Honeywell, Resideo, Yonusa, ZKTeco',
     desc: 'Soluciones inteligentes para el control y automatización de accesos y seguridad perimetral. Integramos tecnología de punta para garantizar la protección de sus instalaciones en el Sureste Mexicano con sistemas robustos y confiables.',
     cardDesc: 'Soluciones inteligentes para el control y automatización de accesos. Integramos tecnología de punta para garantizar la protección total de sus instalaciones.'
   },
@@ -85,7 +85,7 @@ const categories = [
     title: 'Radiocomunicaciones',
     icon: <Radio />,
     items: ['Radios Comerciales', 'Amplificadores', 'Antenas', 'Repetidores', 'Accesorios Originales'],
-    brands: 'Icom, Kenwood',
+    brands: 'Icom, Kenwood, TXPRO, Motorola',
     desc: 'Sistemas de comunicación eficientes y seguros para entornos industriales, comerciales y de emergencia en Villahermosa y Ciudad del Carmen. Aseguramos conectividad constante en cualquier situación crítica.',
     cardDesc: 'Sistemas de comunicación eficientes y seguros para entornos industriales y comerciales. Aseguramos conectividad constante en cualquier situación crítica.'
   },
@@ -832,6 +832,12 @@ const BrokerTelecomPage = () => {
             </div>
           </div>
 
+          <div className="mb-12 bg-white/5 p-6 rounded-2xl border border-white/10 border-l-4 border-l-brand-red">
+            <p className="text-white/80 leading-relaxed text-lg">
+              En R2A México actuamos como <strong className="text-white">comercializadores e integradores</strong> de soluciones de telecomunicaciones. <span className="text-brand-red font-medium">Operamos a través de carriers autorizados en México</span>, lo que nos permite ofrecerte de manera imparcial las mejores opciones y tecnologías disponibles en el mercado, adaptadas exactamente a las necesidades de tu empresa.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <div className="bg-brand-dark p-8 rounded-2xl border border-white/10">
               <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-red mb-6">
@@ -1049,60 +1055,19 @@ const CiberseguridadPage = () => {
 
           <div className="border-t border-white/10 pt-12 mb-12 overflow-hidden">
             <h3 className="text-2xl font-bold mb-8 text-center">Alianzas Estratégicas en Ciberseguridad</h3>
-            <div className="relative w-full flex overflow-hidden mb-8 mask-edges">
-              <div className="flex gap-6 animate-marquee whitespace-nowrap">
-                {[...Array(4)].map((_, i) => (
-                  <React.Fragment key={i}>
-                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img 
-                        src="/logos/sophos.png" 
-                        alt="Sophos" 
-                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
-                        onError={(e) => { 
-                          e.currentTarget.style.display = 'none'; 
-                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
-                        }} 
-                      />
-                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Sophos</span></span>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img 
-                        src="/logos/endpoint-protector.png" 
-                        alt="Endpoint Protector" 
-                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
-                        onError={(e) => { 
-                          e.currentTarget.style.display = 'none'; 
-                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
-                        }} 
-                      />
-                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Endpoint Protector</span></span>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img 
-                        src="/logos/eset.png" 
-                        alt="ESET" 
-                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
-                        onError={(e) => { 
-                          e.currentTarget.style.display = 'none'; 
-                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
-                        }} 
-                      />
-                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">ESET</span></span>
-                    </div>
-                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
-                      <img 
-                        src="/logos/fortinet.png" 
-                        alt="Fortinet" 
-                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
-                        onError={(e) => { 
-                          e.currentTarget.style.display = 'none'; 
-                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
-                        }} 
-                      />
-                      <span className="hidden text-white/80 font-bold text-sm">Partner <span className="text-white">Fortinet</span></span>
-                    </div>
-                  </React.Fragment>
-                ))}
+            <div className="flex justify-center mb-8">
+              <div className="bg-white/5 border border-white/10 px-8 py-6 rounded-2xl flex flex-col items-center justify-center w-72 hover:bg-white/10 transition-colors">
+                <img 
+                  src="/logos/fortinet.png" 
+                  alt="Fortinet" 
+                  className="max-h-12 max-w-[160px] object-contain opacity-90 hover:opacity-100 transition-opacity mb-3" 
+                  onError={(e) => { 
+                    e.currentTarget.style.display = 'none'; 
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
+                  }} 
+                />
+                <span className="hidden text-white font-bold text-xl mb-2">Fortinet</span>
+                <span className="text-brand-red font-bold text-xs uppercase tracking-widest px-3 py-1 bg-brand-red/10 rounded-full">Partner Oficial</span>
               </div>
             </div>
             <p className="text-center text-white/70 text-lg">
