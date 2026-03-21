@@ -995,6 +995,12 @@ const CiberseguridadPage = () => {
             </div>
           </div>
 
+          <div className="mb-12 bg-white/5 p-6 rounded-2xl border border-white/10 border-l-4 border-l-brand-red">
+            <p className="text-white/80 leading-relaxed text-lg">
+              En R2A México somos especialistas en <strong className="text-white">ciberseguridad y protección de datos</strong>. <span className="text-white font-medium">Contamos con certificaciones internacionales y somos partners oficiales</span> de los líderes mundiales en seguridad informática, lo que nos permite diseñar e implementar estrategias de defensa robustas y adaptadas a las necesidades críticas de tu empresa.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <div className="bg-brand-dark p-8 rounded-2xl border border-white/10">
               <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-red mb-6">
@@ -1035,7 +1041,7 @@ const CiberseguridadPage = () => {
           </div>
 
           <div className="border-t border-white/10 pt-12 mb-12 overflow-hidden">
-            <h3 className="text-2xl font-bold mb-8 text-center">Alianzas Estratégicas en Ciberseguridad</h3>
+            <h3 className="text-2xl font-bold mb-8 text-center">Partners Certificados en Ciberseguridad</h3>
             <div className="flex justify-center mb-8">
               <div className="bg-white/5 border border-white/10 px-8 py-6 rounded-2xl flex flex-col items-center justify-center w-72 hover:bg-white/10 transition-colors">
                 <img 
