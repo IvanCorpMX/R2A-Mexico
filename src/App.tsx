@@ -329,7 +329,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="relative h-screen flex items-center overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -342,12 +342,12 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-32 md:pt-40">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full mt-12 md:mt-20">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-2xl mt-16 md:mt-0"
+          className="max-w-2xl"
         >
           <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
             SEGURIDAD, CONTROL Y <br />
