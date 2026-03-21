@@ -99,7 +99,7 @@ const categories = [
     title: 'Torres de Telecomunicaciones',
     icon: <TowerControl />,
     items: ['Arriostradas (9 a 90 metros)', 'Auto-soportadas', 'Mástiles', 'Alojamiento de Infraestructura', 'Implementación y Monitoreo'],
-    brands: 'Diseño de Ingeniería',
+    brands: '',
     desc: 'Diseño, instalación y mantenimiento de infraestructura para telecomunicaciones en la Zona Industrial de Villahermosa. Ofrecemos soluciones estructurales adaptadas a las necesidades específicas de cobertura y capacidad en el Sureste.',
     cardDesc: 'Diseño, instalación y mantenimiento de infraestructura para telecomunicaciones. Ofrecemos soluciones estructurales adaptadas a sus necesidades de cobertura y capacidad.'
   },
@@ -441,20 +441,22 @@ const SolutionsSection = () => {
               <p className="text-white/60 text-sm mb-6 flex-grow leading-relaxed">
                 {cat.cardDesc}
               </p>
-              <div className="mt-auto pt-4 border-t border-white/10">
-                <p className="text-xs text-white/40 uppercase tracking-wider font-semibold mb-2">Marcas destacadas:</p>
-                <div className="relative w-full flex overflow-hidden mask-edges h-20">
-                  <div className="flex gap-6 animate-marquee whitespace-nowrap items-center">
-                    {[...Array(2)].map((_, loopIndex) => (
-                      <React.Fragment key={loopIndex}>
-                        {cat.brands.split(', ').map((brand, bIndex) => (
-                          <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 px-3 h-16" />
-                        ))}
-                      </React.Fragment>
-                    ))}
+              {cat.brands && (
+                <div className="mt-auto pt-4 border-t border-white/10">
+                  <p className="text-xs text-white/40 uppercase tracking-wider font-semibold mb-2">Marcas destacadas:</p>
+                  <div className="relative w-full flex overflow-hidden mask-edges h-20">
+                    <div className="flex gap-6 animate-marquee whitespace-nowrap items-center">
+                      {[...Array(2)].map((_, loopIndex) => (
+                        <React.Fragment key={loopIndex}>
+                          {cat.brands.split(', ').map((brand, bIndex) => (
+                            <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 px-3 h-16" />
+                          ))}
+                        </React.Fragment>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -834,7 +836,7 @@ const BrokerTelecomPage = () => {
 
           <div className="mb-12 bg-white/5 p-6 rounded-2xl border border-white/10 border-l-4 border-l-brand-red">
             <p className="text-white/80 leading-relaxed text-lg">
-              En R2A México actuamos como <strong className="text-white">comercializadores e integradores</strong> de soluciones de telecomunicaciones. <span className="text-brand-red font-medium">Operamos a través de carriers autorizados en México</span>, lo que nos permite ofrecerte de manera imparcial las mejores opciones y tecnologías disponibles en el mercado, adaptadas exactamente a las necesidades de tu empresa.
+              En R2A México actuamos como <strong className="text-white">comercializadores e integradores</strong> de soluciones de telecomunicaciones. <span className="text-white font-medium">Operamos a través de carriers autorizados en México</span>, lo que nos permite ofrecerte de manera imparcial las mejores opciones y tecnologías disponibles en el mercado, adaptadas exactamente a las necesidades de tu empresa.
             </p>
           </div>
 
@@ -885,57 +887,36 @@ const BrokerTelecomPage = () => {
                   <React.Fragment key={i}>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="https://logo.clearbit.com/alestra.mx" 
+                        src="/logos/alestra.png" 
                         alt="Alestra" 
-                        referrerPolicy="no-referrer"
-                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
-                          const img = e.currentTarget;
-                          if (!img.src.includes('google.com')) {
-                            img.src = 'https://www.google.com/s2/favicons?domain=alestra.mx&sz=128';
-                            img.classList.remove('filter', 'brightness-0', 'invert');
-                          } else {
-                            img.style.display = 'none'; 
-                            img.nextElementSibling?.classList.remove('hidden'); 
-                          }
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
                         }} 
                       />
                       <span className="hidden text-white/80 font-bold text-sm">Integrador Autorizado <span className="text-white">alestra</span></span>
                     </div>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="https://logo.clearbit.com/metrocarrier.com.mx" 
+                        src="/logos/metrocarrier.png" 
                         alt="MetroCarrier" 
-                        referrerPolicy="no-referrer"
-                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
-                          const img = e.currentTarget;
-                          if (!img.src.includes('google.com')) {
-                            img.src = 'https://www.google.com/s2/favicons?domain=metrocarrier.com.mx&sz=128';
-                            img.classList.remove('filter', 'brightness-0', 'invert');
-                          } else {
-                            img.style.display = 'none'; 
-                            img.nextElementSibling?.classList.remove('hidden'); 
-                          }
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
                         }} 
                       />
                       <span className="hidden text-white/80 font-bold text-sm">Socio Comercial <span className="text-white">MetroCarrier</span></span>
                     </div>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="https://logo.clearbit.com/net2phone.com" 
+                        src="/logos/net2phone.png" 
                         alt="net2phone" 
-                        referrerPolicy="no-referrer"
-                        className="max-h-8 max-w-[120px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" 
+                        className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
-                          const img = e.currentTarget;
-                          if (!img.src.includes('google.com')) {
-                            img.src = 'https://www.google.com/s2/favicons?domain=net2phone.com&sz=128';
-                            img.classList.remove('filter', 'brightness-0', 'invert');
-                          } else {
-                            img.style.display = 'none'; 
-                            img.nextElementSibling?.classList.remove('hidden'); 
-                          }
+                          e.currentTarget.style.display = 'none'; 
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
                         }} 
                       />
                       <span className="hidden text-white/80 font-bold text-sm"><span className="text-white">net2phone</span> Partner Autorizado</span>
@@ -1283,21 +1264,31 @@ const SolutionPage = () => {
             </div>
             
             <div>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <CheckCircle2 className="text-brand-red" /> Integración con Marcas Líderes
-              </h2>
-              <div className="bg-brand-dark p-6 rounded-xl border border-white/10">
-                <p className="text-white/80 leading-relaxed">
-                  Trabajamos con los líderes de la industria para garantizar la máxima calidad, confiabilidad y transferir autoridad a su infraestructura:
-                </p>
-                <div className="mt-6 flex flex-wrap gap-4 items-center">
-                  {category.brands.split(', ').map(brand => (
-                    <div key={brand} className="bg-white/5 px-4 py-2 rounded-xl flex items-center justify-center h-12 min-w-[100px] border border-white/10">
-                      <BrandLogo brand={brand} className="opacity-80 hover:opacity-100 transition-opacity" />
+              {category.brands && (
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <CheckCircle2 className="text-brand-red" /> Integración con Marcas Líderes
+                  </h2>
+                  <div className="bg-brand-dark p-6 rounded-xl border border-white/10 overflow-hidden">
+                    <p className="text-white/80 leading-relaxed mb-6">
+                      Trabajamos con los líderes de la industria para garantizar la máxima calidad, confiabilidad y transferir autoridad a su infraestructura:
+                    </p>
+                    <div className="relative w-full flex overflow-hidden mask-edges h-20">
+                      <div className="flex gap-6 animate-marquee whitespace-nowrap items-center">
+                        {[...Array(2)].map((_, loopIndex) => (
+                          <React.Fragment key={loopIndex}>
+                            {category.brands.split(', ').map((brand, bIndex) => (
+                              <div key={`${loopIndex}-${bIndex}`} className="bg-white/5 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 min-w-[160px] border border-white/10">
+                                <BrandLogo brand={brand} className="h-8 w-auto max-w-[120px]" />
+                              </div>
+                            ))}
+                          </React.Fragment>
+                        ))}
+                      </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
+              )}
               
               <div className="mt-8">
                 <Link to={`/?service=${encodeURIComponent(category.title)}#contacto`} className="w-full bg-brand-red hover:bg-red-700 text-white py-4 rounded-xl font-black text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-red/20 cursor-pointer">
