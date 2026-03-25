@@ -70,7 +70,7 @@ const categories = [
     altImage: 'Sistema de control de acceso biométrico instalado en zona industrial de Villahermosa',
     title: 'Automatización',
     icon: <Cpu />,
-    items: ['Sistemas de Alarmas', 'Cercos Eléctricos', 'Identificación y Credencialización', 'Biométricos', 'Acceso Vehicular', 'Torniquetes y Puertas'],
+    items: ['Domótica', 'Telemetría', 'Control de Acceso', 'Cercos Eléctricos', 'Biométricos', 'Acceso Vehicular', 'Torniquetes y Puertas'],
     brands: 'Honeywell, Resideo, Yonusa, ZKTeco',
     desc: 'Soluciones inteligentes para el control y automatización de accesos y seguridad perimetral. Integramos tecnología de punta para garantizar la protección de sus instalaciones en el Sureste Mexicano con sistemas robustos y confiables.',
     cardDesc: 'Soluciones inteligentes para el control y automatización de accesos. Integramos tecnología de punta para garantizar la protección total de sus instalaciones.'
@@ -84,7 +84,7 @@ const categories = [
     altImage: 'Equipos de radiocomunicación Kenwood operando en instalación industrial en Ciudad del Carmen',
     title: 'Radiocomunicaciones',
     icon: <Radio />,
-    items: ['Radios Comerciales', 'Amplificadores', 'Antenas', 'Repetidores', 'Accesorios Originales'],
+    items: ['Radios Comerciales', 'Radios Intrínsecamente Seguros', 'Amplificadores', 'Antenas', 'Repetidores'],
     brands: 'Icom, Kenwood, TXPRO, Motorola',
     desc: 'Sistemas de comunicación eficientes y seguros para entornos industriales, comerciales y de emergencia en Villahermosa y Ciudad del Carmen. Aseguramos conectividad constante en cualquier situación crítica.',
     cardDesc: 'Sistemas de comunicación eficientes y seguros para entornos industriales y comerciales. Aseguramos conectividad constante en cualquier situación crítica.'
@@ -140,7 +140,7 @@ const categories = [
     altImage: 'Antenas para enlaces dedicados inalámbricos instaladas en torre de telecomunicaciones en Villahermosa',
     title: 'Enlaces ptp',
     icon: <Wifi />,
-    items: ['Enlaces Backhaul (PtP)', 'Frecuencias con y sin licencia'],
+    items: ['Enlaces Backhaul (PtP)', 'Protección de Descarga'],
     brands: 'Ubiquiti, Mimosa',
     desc: 'Conectividad inalámbrica de alta velocidad y confiabilidad en Villahermosa y zonas aledañas. Diseñamos redes punto a punto y punto a multipunto para extender su red corporativa o proveer acceso a internet.',
     cardDesc: 'Conectividad inalámbrica de alta velocidad y confiabilidad. Diseñamos redes punto a punto y punto a multipunto para extender su red corporativa sin límites.'
@@ -154,7 +154,7 @@ const categories = [
     altImage: 'Sistema de telemetría y control industrial operando en el Sureste Mexicano',
     title: 'Telemetría',
     icon: <Activity />,
-    items: ['Monitoreo de Variables', 'Control Remoto', 'Adquisición de Datos (SCADA)', 'Sensores Industriales', 'Automatización de Procesos'],
+    items: ['Monitoreo de Variables', 'Control Remoto', 'Sensores Industriales', 'Automatización de Procesos'],
     brands: 'Siemens, Schneider Electric, Rockwell',
     desc: 'Sistemas avanzados de telemetría para la medición, monitoreo y control remoto de variables físicas y químicas en tiempo real, optimizando la toma de decisiones.',
     cardDesc: 'Sistemas avanzados para la medición, monitoreo y control remoto de variables en tiempo real, optimizando la toma de decisiones operativas.'
@@ -609,7 +609,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Llámanos</p>
-                  <p className="text-xl font-bold">+52 993 351 1828</p>
+                  <p className="text-xl font-bold">+52 55 4145 6851</p>
                 </div>
               </div>
               <div className="flex items-center gap-6">
@@ -770,7 +770,7 @@ const Footer = () => {
             <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-brand-red">Contacto</h4>
             <ul className="space-y-4 text-sm text-white/40">
               <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> +52 993 351 1828</li>
-              <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> +52 993 342 2134</li>
+              <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> +52 55 4145 6851</li>
               <li className="flex items-center gap-2"><Mail className="w-4 h-4" /> ventas@r2a.com.mx</li>
               <li className="flex items-center gap-2"><Globe className="w-4 h-4" /> www.r2a.com.mx</li>
             </ul>
