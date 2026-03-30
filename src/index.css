@@ -9,6 +9,7 @@
   --color-brand-dark: #0F172A;
   --color-brand-gray: #1E293B;
   --color-brand-silver: #C0C0C0;
+  --color-white: #ffffff;
 }
 
 @layer base {
@@ -17,11 +18,24 @@
   }
   body {
     @apply bg-brand-dark text-white font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
+  .light-mode {
+    --color-brand-dark: #ffffff;
+    --color-brand-gray: #f1f5f9;
+    --color-white: #0F172A;
+  }
+  .light-mode img:not(.logo-img) {
+    /* Optionally adjust images if needed, but let's leave them for now */
+  }
+  .logo-dark { display: block; }
+  .logo-light { display: none; }
+  .light-mode .logo-dark { display: none; }
+  .light-mode .logo-light { display: block; }
 }
 
 .metallic-gradient {
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  background: linear-gradient(135deg, var(--color-brand-dark) 0%, var(--color-brand-gray) 50%, var(--color-brand-dark) 100%);
 }
 
 .red-glow {
@@ -29,7 +43,7 @@
 }
 
 .glass-card {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+  @apply bg-brand-gray backdrop-blur-md border border-brand-silver/20;
 }
 
 @keyframes marquee {

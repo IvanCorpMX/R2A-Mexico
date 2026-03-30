@@ -37,7 +37,9 @@ import {
   ShieldCheck,
   Lock,
   Server,
-  ShieldAlert
+  ShieldAlert,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 // --- Data ---
@@ -113,7 +115,7 @@ const categories = [
     title: 'GPS',
     icon: <MapPin />,
     items: ['Plataforma Telemétrica', 'Seguridad Personal', 'GPS y Control de Combustible', 'Bloqueo de Encendido'],
-    brands: 'Teltonika, Ruptela',
+    brands: 'Teltonika, Ruptela, Bueno Cell, Wialon',
     desc: 'Rastreo y gestión de flotas en tiempo real para empresas en el Sureste Mexicano. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos y personal en movimiento.',
     cardDesc: 'Rastreo y gestión de flotas en tiempo real. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos en movimiento.'
   },
@@ -180,14 +182,26 @@ const categories = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
+    
+    // Check initial theme
+    if (document.body.classList.contains('light-mode')) {
+      setIsLightMode(true);
+    }
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    setIsLightMode(!isLightMode);
+    document.body.classList.toggle('light-mode');
+  };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -222,7 +236,16 @@ const Navbar = () => {
           <img 
             src="/logo.png" 
             alt="R2A México" 
-            className="h-10 object-contain"
+            className="h-10 object-contain logo-dark"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+          <img 
+            src="/logo-claro.png" 
+            alt="R2A México" 
+            className="h-10 object-contain logo-light"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               e.currentTarget.nextElementSibling?.classList.remove('hidden');
@@ -254,19 +277,35 @@ const Navbar = () => {
             href="/brochure.pdf" 
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-brand-red hover:bg-red-700 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2"
+            className="bg-brand-red hover:bg-red-700 text-[#ffffff] px-5 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2"
           >
             <Download className="w-4 h-4" /> BROCHURE
           </a>
+          <button
+            onClick={toggleTheme}
+            className="text-white/70 hover:text-brand-red transition-colors p-2 rounded-full hover:bg-white/5"
+            aria-label="Toggle theme"
+          >
+            {isLightMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+          </button>
         </div>
 
         {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="text-white/70 hover:text-brand-red transition-colors p-2 rounded-full hover:bg-white/5"
+            aria-label="Toggle theme"
+          >
+            {isLightMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+          </button>
+          <button 
+            className="text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -293,7 +332,7 @@ const Navbar = () => {
                 href="/brochure.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-brand-red text-white text-center py-3 rounded-lg font-bold flex items-center justify-center gap-2"
+                className="bg-brand-red text-[#ffffff] text-center py-3 rounded-lg font-bold flex items-center justify-center gap-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Download className="w-5 h-5" /> DESCARGAR BROCHURE
@@ -360,7 +399,7 @@ const Hero = () => {
             <a 
               href="#soluciones" 
               onClick={(e) => handleNavClick(e, '#soluciones')}
-              className="bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group"
+              className="bg-brand-red hover:bg-red-700 text-[#ffffff] px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group"
             >
               EXPLORAR SOLUCIONES
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -390,7 +429,7 @@ const AboutSection = () => {
               R2A es una empresa dedicada a la seguridad electrónica, con nuestra experiencia podemos satisfacer soluciones domesticas hasta industrial.
             </p>
             <p className="text-white/70 text-lg mb-8 leading-relaxed">
-              Contamos con un equipo de trabajo que cuenta con experiencia de hasta 8 años en la gestión, planeación y ejecución de diversos proyectos en Seguridad Electrónica para los distintos sectores e industrias de nuestro país.
+              Contamos con un equipo de trabajo que cuenta con experiencia de 10 años en la gestión, planeación y ejecución de diversos proyectos en Seguridad Electrónica para los distintos sectores e industrias de nuestro país.
             </p>
             <div className="p-6 bg-brand-dark border-l-4 border-brand-red rounded-r-xl">
               <p className="text-xl font-medium italic text-white/90">
@@ -484,7 +523,7 @@ const BrokerTelecomSection = () => {
             </p>
             <button 
               onClick={() => navigate('/broker-telecom')}
-              className="bg-white text-brand-dark hover:bg-gray-200 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer"
+              className="bg-white text-[#0F172A] hover:bg-gray-200 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer"
             >
               VER SERVICIOS TELECOM
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -545,7 +584,7 @@ const CiberseguridadSection = () => {
             </p>
             <button 
               onClick={() => navigate('/ciberseguridad')}
-              className="bg-brand-red text-white hover:bg-red-700 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer shadow-lg shadow-brand-red/20"
+              className="bg-brand-red text-[#ffffff] hover:bg-red-700 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer shadow-lg shadow-brand-red/20"
             >
               VER SERVICIOS DE CIBERSEGURIDAD
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -629,13 +668,13 @@ const ContactForm = () => {
                 <div className="flex gap-2 bg-white/5 p-1 rounded-lg w-fit">
                   <button
                     onClick={() => setActiveMap('villahermosa')}
-                    className={`px-4 py-2 text-xs font-bold rounded-md transition-colors ${activeMap === 'villahermosa' ? 'bg-brand-red text-white' : 'text-white/50 hover:text-white'}`}
+                    className={`px-4 py-2 text-xs font-bold rounded-md transition-colors ${activeMap === 'villahermosa' ? 'bg-brand-red text-[#ffffff]' : 'text-white/50 hover:text-white'}`}
                   >
                     Villahermosa
                   </button>
                   <button
                     onClick={() => setActiveMap('tuxtla')}
-                    className={`px-4 py-2 text-xs font-bold rounded-md transition-colors ${activeMap === 'tuxtla' ? 'bg-brand-red text-white' : 'text-white/50 hover:text-white'}`}
+                    className={`px-4 py-2 text-xs font-bold rounded-md transition-colors ${activeMap === 'tuxtla' ? 'bg-brand-red text-[#ffffff]' : 'text-white/50 hover:text-white'}`}
                   >
                     Tuxtla Gutiérrez
                   </button>
@@ -734,7 +773,16 @@ const Footer = () => {
               <img 
                 src="/logo.png" 
                 alt="R2A México" 
-                className="h-10 object-contain"
+                className="h-10 object-contain logo-dark"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <img 
+                src="/logo-claro.png" 
+                alt="R2A México" 
+                className="h-10 object-contain logo-light"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
@@ -793,10 +841,10 @@ const Footer = () => {
 const WhatsAppButton = () => {
   return (
     <a
-      href="https://wa.me/5219933420755"
+      href="https://wa.me/5215510348105"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#128C7E] transition-colors hover:scale-110 transform duration-200"
+      className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-[#ffffff] p-4 rounded-full shadow-lg hover:bg-[#128C7E] transition-colors hover:scale-110 transform duration-200"
       aria-label="Contactar por WhatsApp"
     >
       <MessageCircle className="w-8 h-8" />
@@ -947,17 +995,15 @@ const BrokerTelecomPage = () => {
             <div>
               <h3 className="text-2xl font-bold mb-6 text-brand-red">Contacto Directo</h3>
               <ul className="space-y-4 text-white/80">
-                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-brand-red" /> bt@r2a.com.mx</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 55 9337 3832</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 993 351 1828</li>
-                <li className="flex items-center gap-3"><MessageCircle className="w-5 h-5 text-green-500" /> +52 55 7901 7377</li>
-                <li className="flex items-center gap-3"><MessageCircle className="w-5 h-5 text-green-500" /> +52 993 342 2134</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 1 55 1034 8105</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 1 55 7877 7227</li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 1 999 906 3766</li>
               </ul>
             </div>
           </div>
           
           <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/?service=Broker%20Telecom#contacto" className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg shadow-brand-red/20">
+            <Link to="/?service=Broker%20Telecom#contacto" className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-[#ffffff] px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg shadow-brand-red/20">
               COTIZAR SERVICIO TELECOM
             </Link>
           </div>
@@ -991,7 +1037,8 @@ const CiberseguridadPage = () => {
             </div>
             <div className="bg-brand-dark p-4 rounded-xl border border-white/10 text-right">
               <p className="text-xs text-white/40 uppercase tracking-widest mb-1">Certificación</p>
-              <p className="font-mono font-bold text-white/90">ISO 27001</p>
+              <img src="/logos/iso27001.png" alt="ISO 27001" className="h-8 object-contain ml-auto" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+              <p className="hidden font-mono font-bold text-white/90">ISO 27001</p>
             </div>
           </div>
 
@@ -1045,15 +1092,15 @@ const CiberseguridadPage = () => {
             <div className="flex justify-center mb-8">
               <div className="bg-white/5 border border-white/10 px-8 py-6 rounded-2xl flex flex-col items-center justify-center w-72 hover:bg-white/10 transition-colors">
                 <img 
-                  src="/logos/fortinet.png" 
-                  alt="Fortinet" 
+                  src="/logos/endpointprotector.png" 
+                  alt="Endpointprotector" 
                   className="max-h-12 max-w-[160px] object-contain opacity-90 hover:opacity-100 transition-opacity mb-3" 
                   onError={(e) => { 
                     e.currentTarget.style.display = 'none'; 
                     e.currentTarget.nextElementSibling?.classList.remove('hidden'); 
                   }} 
                 />
-                <span className="hidden text-white font-bold text-xl mb-2">Fortinet</span>
+                <span className="hidden text-white font-bold text-xl mb-2">Endpointprotector</span>
                 <span className="text-brand-red font-bold text-xs uppercase tracking-widest px-3 py-1 bg-brand-red/10 rounded-full">Partner Oficial</span>
               </div>
             </div>
@@ -1088,7 +1135,7 @@ const CiberseguridadPage = () => {
           </div>
           
           <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/?service=Ciberseguridad#contacto" className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg shadow-brand-red/20">
+            <Link to="/?service=Ciberseguridad#contacto" className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-[#ffffff] px-8 py-4 rounded-xl font-black text-lg transition-all shadow-lg shadow-brand-red/20">
               COTIZAR SERVICIO DE CIBERSEGURIDAD
             </Link>
           </div>
@@ -1100,11 +1147,11 @@ const CiberseguridadPage = () => {
 
 const IsoCertificationSection = () => {
   return (
-    <section className="py-24 bg-white text-brand-dark relative overflow-hidden">
+    <section className="py-24 bg-brand-dark text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
           <div className="md:w-1/3 flex justify-center order-2 md:order-1">
-            <div className="bg-white p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center w-full max-w-[400px] relative">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl border border-gray-100 flex items-center justify-center w-full max-w-[400px] relative">
               <div className="absolute inset-0 bg-slate-100 rounded-3xl transform rotate-3 -z-10"></div>
               <img 
                 src="/iso27001.png" 
@@ -1123,55 +1170,55 @@ const IsoCertificationSection = () => {
             </div>
           </div>
           <div className="md:w-2/3 order-1 md:order-2">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-brand-dark font-bold text-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gray text-white font-bold text-sm mb-6">
               <ShieldCheck className="w-4 h-4" />
               <span>Seguridad de la Información</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black mb-6 text-brand-dark leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 text-white leading-tight">
               Certificados en <span className="text-brand-red">ISO 27001</span>
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed mb-10">
+            <p className="text-xl text-white/70 leading-relaxed mb-10">
               En R2A México, la protección de tus datos es nuestra máxima prioridad. Contamos con la certificación internacional ISO 27001, garantizando que nuestros procesos, operaciones y servicios cumplen con los estándares globales más estrictos.
             </p>
             
             <div className="grid sm:grid-cols-2 gap-8">
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full bg-brand-gray flex items-center justify-center shrink-0">
                   <Lock className="w-6 h-6 text-brand-red" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-brand-dark mb-1">Confidencialidad</h4>
-                  <p className="text-gray-600 text-sm">Acceso restringido solo a personal autorizado.</p>
+                  <h4 className="font-bold text-lg text-white mb-1">Confidencialidad</h4>
+                  <p className="text-white/60 text-sm">Acceso restringido solo a personal autorizado.</p>
                 </div>
               </div>
               
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full bg-brand-gray flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-6 h-6 text-brand-red" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-brand-dark mb-1">Integridad</h4>
-                  <p className="text-gray-600 text-sm">Datos exactos, completos y libres de alteraciones.</p>
+                  <h4 className="font-bold text-lg text-white mb-1">Integridad</h4>
+                  <p className="text-white/60 text-sm">Datos exactos, completos y libres de alteraciones.</p>
                 </div>
               </div>
               
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full bg-brand-gray flex items-center justify-center shrink-0">
                   <Server className="w-6 h-6 text-brand-red" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-brand-dark mb-1">Disponibilidad</h4>
-                  <p className="text-gray-600 text-sm">Información accesible siempre que la necesites.</p>
+                  <h4 className="font-bold text-lg text-white mb-1">Disponibilidad</h4>
+                  <p className="text-white/60 text-sm">Información accesible siempre que la necesites.</p>
                 </div>
               </div>
               
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full bg-brand-gray flex items-center justify-center shrink-0">
                   <ShieldAlert className="w-6 h-6 text-brand-red" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-brand-dark mb-1">Gestión de Riesgos</h4>
-                  <p className="text-gray-600 text-sm">Identificación y mitigación proactiva de amenazas.</p>
+                  <h4 className="font-bold text-lg text-white mb-1">Gestión de Riesgos</h4>
+                  <p className="text-white/60 text-sm">Identificación y mitigación proactiva de amenazas.</p>
                 </div>
               </div>
             </div>
@@ -1297,7 +1344,7 @@ const SolutionPage = () => {
               )}
               
               <div className="mt-8">
-                <Link to={`/?service=${encodeURIComponent(category.title)}#contacto`} className="w-full bg-brand-red hover:bg-red-700 text-white py-4 rounded-xl font-black text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-red/20 cursor-pointer">
+                <Link to={`/?service=${encodeURIComponent(category.title)}#contacto`} className="w-full bg-brand-red hover:bg-red-700 text-[#ffffff] py-4 rounded-xl font-black text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-red/20 cursor-pointer">
                   {category.ctaText}
                 </Link>
               </div>
