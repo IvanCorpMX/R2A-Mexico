@@ -523,7 +523,7 @@ const BrokerTelecomSection = () => {
             </p>
             <button 
               onClick={() => navigate('/broker-telecom')}
-              className="bg-white text-[#0F172A] hover:bg-gray-200 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer"
+              className="bg-white text-brand-dark hover:bg-gray-200 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer"
             >
               VER SERVICIOS TELECOM
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
