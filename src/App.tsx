@@ -725,7 +725,7 @@ const ContactForm = () => {
                 src="https://outlook.office.com/bookwithme/user/6ada8b15361840fba63c1e60cc000de3@corp-mx.com?anonymous&ismsaljsauthenabled&ep=plink" 
                 width="100%" 
                 height="800" 
-                style={{ border: 0, borderRadius: '1.5rem', backgroundColor: 'black' }} 
+                style={{ border: 0, borderRadius: '1.5rem', backgroundColor: 'white' }} 
                 allowFullScreen 
                 loading="lazy"
               ></iframe>
