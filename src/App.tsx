@@ -51,7 +51,7 @@ const BrandLogo = ({ brand, className = "" }: { brand: string, className?: strin
       <img 
         src={`/logos/${filename}`} 
         alt={brand}
-        className="h-full w-auto object-contain max-h-full opacity-70 hover:opacity-100 transition-opacity"
+        className="h-full w-auto object-contain max-h-full logo-silhouette"
         onError={(e) => {
           e.currentTarget.style.display = 'none';
           e.currentTarget.nextElementSibling?.classList.remove('hidden');
@@ -115,7 +115,7 @@ const categories = [
     title: 'GPS',
     icon: <MapPin />,
     items: ['Plataforma Telemétrica', 'Seguridad Personal', 'GPS y Control de Combustible', 'Bloqueo de Encendido'],
-    brands: 'Teltonika, Ruptela, Bueno Cell, Wialon',
+    brands: 'Teltonika, Ruptela, Wialon',
     desc: 'Rastreo y gestión de flotas en tiempo real para empresas en el Sureste Mexicano. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos y personal en movimiento.',
     cardDesc: 'Rastreo y gestión de flotas en tiempo real. Optimice sus recursos, reduzca costos operativos y garantice la seguridad de sus vehículos en movimiento.'
   },
@@ -143,7 +143,7 @@ const categories = [
     title: 'Audio y Video',
     icon: <MonitorPlay />,
     items: ['Voceo y Audio', 'Videowall', 'Extensores y Divisores', 'Repetidores', 'Sistemas de Evacuación por Voz'],
-    brands: 'Sonos',
+    brands: 'Sonos, Lea, Lutron, HPMLED',
     desc: 'Soluciones audiovisuales profesionales para salas de control, corporativos y espacios comerciales en el Sureste Mexicano. Comunicación clara y visualización de alto impacto.',
     cardDesc: 'Soluciones audiovisuales profesionales para salas de control, corporativos y espacios comerciales. Comunicación clara y visualización de alto impacto.'
   },
@@ -171,7 +171,7 @@ const categories = [
     title: 'Telemetría',
     icon: <Activity />,
     items: ['Monitoreo de Variables', 'Control Remoto', 'Sensores Industriales', 'Automatización de Procesos'],
-    brands: '',
+    brands: 'Womaster',
     desc: 'Sistemas avanzados de telemetría para la medición, monitoreo y control remoto de variables físicas y químicas en tiempo real, optimizando la toma de decisiones.',
     cardDesc: 'Sistemas avanzados para la medición, monitoreo y control remoto de variables en tiempo real, optimizando la toma de decisiones operativas.'
   }
@@ -468,27 +468,27 @@ const SolutionsSection = () => {
               key={i}
               whileHover={{ y: -5 }}
               onClick={() => navigate(`/servicios/${cat.slug}`)}
-              className="glass-card p-6 rounded-2xl border-t-4 border-t-brand-red flex flex-col h-full cursor-pointer hover:bg-white/10 transition-colors group"
+              className="bg-brand-dark p-8 rounded-3xl border border-white/10 hover:border-brand-red/50 flex flex-col h-full cursor-pointer hover:bg-white/5 transition-all group shadow-xl"
             >
-              <div className="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+              <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                 {cat.icon}
               </div>
-              <h3 className="text-xl font-bold mb-4 flex items-center justify-between">
-                {cat.title}
-                <ChevronRight className="w-5 h-5 text-white/30 group-hover:text-brand-red transition-colors" />
+              <h3 className="text-2xl font-bold mb-4 flex items-center justify-between gap-2">
+                <span className="break-words min-w-0">{cat.title}</span>
+                <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-brand-red group-hover:translate-x-1 transition-all shrink-0" />
               </h3>
-              <p className="text-white/60 text-sm mb-6 flex-grow leading-relaxed">
+              <p className="text-white/60 text-sm mb-8 flex-grow leading-relaxed">
                 {cat.cardDesc}
               </p>
               {cat.brands && (
-                <div className="mt-auto pt-4 border-t border-white/10">
-                  <p className="text-xs text-white/40 uppercase tracking-wider font-semibold mb-2">Marcas destacadas:</p>
-                  <div className="relative w-full flex overflow-hidden mask-edges h-20">
-                    <div className="flex gap-6 animate-marquee whitespace-nowrap items-center">
+                <div className="mt-auto pt-6 border-t border-white/10">
+                  <p className="text-xs text-white/40 uppercase tracking-widest font-bold mb-4">Integración con:</p>
+                  <div className="relative w-full flex overflow-hidden mask-edges h-12">
+                    <div className="flex gap-8 animate-marquee whitespace-nowrap items-center">
                       {[...Array(2)].map((_, loopIndex) => (
                         <React.Fragment key={loopIndex}>
                           {cat.brands.split(', ').map((brand, bIndex) => (
-                            <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 px-3 h-16" />
+                            <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 h-8" />
                           ))}
                         </React.Fragment>
                       ))}
@@ -519,7 +519,7 @@ const BrokerTelecomSection = () => {
               BROKER <span className="text-brand-red">TELECOM</span>
             </h2>
             <p className="text-white/70 text-lg mb-8 leading-relaxed">
-              Conectividad empresarial de alto rendimiento. Internet dedicado, LAN to LAN y Troncales IP con cobertura en las principales ciudades de México.
+              Integración y comercialización de servicios de telecomunicaciones sobre carriers autorizados en México, agregando gestión, seguridad y continuidad operativa.
             </p>
             <button 
               onClick={() => navigate('/broker-telecom')}
@@ -539,9 +539,8 @@ const BrokerTelecomSection = () => {
                 onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/telecom-tower/1000/600"; }}
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-brand-red p-6 rounded-2xl shadow-2xl text-white">
-              <p className="text-3xl font-black mb-1">99.9%</p>
-              <p className="text-xs font-bold uppercase tracking-widest opacity-80">SLA Garantizado</p>
+            <div className="absolute -bottom-6 -left-6 bg-brand-red p-6 rounded-2xl shadow-2xl text-white max-w-[280px]">
+              <p className="text-xl font-black mb-1 leading-tight">SLA respaldado por los mejores carries de Mexico</p>
             </div>
           </div>
         </div>
@@ -648,7 +647,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Llámanos</p>
-                  <p className="text-xl font-bold">+52 55 4145 6851</p>
+                  <p className="text-xl font-bold">+52 993 351 1828</p>
                 </div>
               </div>
               <div className="flex items-center gap-6">
@@ -1243,6 +1242,22 @@ const HomePage = () => {
   );
 };
 
+const getServiceIcon = (text: string) => {
+  const lower = text.toLowerCase();
+  if (lower.includes('cámara') || lower.includes('video') || lower.includes('cctv')) return <Cctv className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('acceso') || lower.includes('puerta') || lower.includes('torniquete')) return <Lock className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('red') || lower.includes('enlace') || lower.includes('wifi') || lower.includes('inalámbric') || lower.includes('repetidor')) return <Wifi className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('gps') || lower.includes('rastreo') || lower.includes('flota') || lower.includes('vehículo') || lower.includes('telemétrica')) return <MapPin className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('audio') || lower.includes('voceo') || lower.includes('sonido') || lower.includes('evacuación')) return <MonitorPlay className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('torre') || lower.includes('mástil') || lower.includes('infraestructura')) return <TowerControl className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('telemetría') || lower.includes('sensor') || lower.includes('monitoreo') || lower.includes('variable')) return <Activity className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('radio') || lower.includes('comunicación')) return <Radio className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('fuego') || lower.includes('incendio') || lower.includes('alarma')) return <Flame className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('servidor') || lower.includes('almacenamiento') || lower.includes('grabador')) return <Server className="w-6 h-6 text-brand-red shrink-0" />;
+  if (lower.includes('cerco') || lower.includes('eléctrico') || lower.includes('energía')) return <Zap className="w-6 h-6 text-brand-red shrink-0" />;
+  return <CheckCircle2 className="w-6 h-6 text-brand-red shrink-0" />;
+};
+
 const SolutionPage = () => {
   const location = useLocation();
   const slug = location.pathname.split('/').pop();
@@ -1274,81 +1289,91 @@ const SolutionPage = () => {
   }
 
   return (
-    <div className="pt-32 pb-24 min-h-screen">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="pt-32 pb-24 min-h-screen bg-brand-dark">
+      <div className="max-w-7xl mx-auto px-6">
         <Link to="/#soluciones" className="inline-flex items-center gap-2 text-white/50 hover:text-brand-red transition-colors mb-8">
           <ArrowRight className="w-4 h-4 rotate-180" /> Volver a soluciones
         </Link>
         
-        <div className="glass-card p-10 rounded-3xl border-t-4 border-t-brand-red">
-          <div className="flex flex-col md:flex-row gap-8 items-start mb-10">
-            <div className="flex-1">
-              <div className="w-20 h-20 bg-brand-red/10 rounded-2xl flex items-center justify-center text-brand-red mb-8">
+        <div className="flex flex-col lg:flex-row gap-16 items-start mb-16">
+          <div className="flex-1">
+            <div className="w-20 h-20 bg-brand-red/10 rounded-2xl flex items-center justify-center text-brand-red mb-8">
+              {category.id === 'gps' ? (
+                <img src="/gps-logo.png" alt="GPS Logo" className="w-16 h-16 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+              ) : null}
+              <div className={category.id === 'gps' ? 'hidden' : ''}>
                 {React.cloneElement(category.icon as React.ReactElement, { className: 'w-10 h-10' })}
               </div>
-              <h1 className="text-4xl md:text-5xl font-black mb-6 leading-tight">{category.h1}</h1>
-              <p className="text-xl text-white/70 leading-relaxed">
-                {category.desc}
-              </p>
             </div>
-            <div className="w-full md:w-1/3 shrink-0">
-              <img 
-                src={`/${category.id}.webp`} 
-                alt={category.altImage} 
-                className="w-full h-64 object-cover rounded-2xl shadow-xl border border-white/10"
-                onError={(e) => { e.currentTarget.src = `https://picsum.photos/seed/${category.id}/600/400`; }}
-              />
-            </div>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">{category.h1}</h1>
+            <p className="text-xl text-white/70 leading-relaxed mb-10">
+              {category.desc}
+            </p>
           </div>
+          <div className="w-full lg:w-5/12 shrink-0">
+            <img 
+              src={`/${category.id}.webp`} 
+              alt={category.altImage} 
+              className="w-full aspect-[4/3] object-cover rounded-3xl shadow-2xl border border-white/10"
+              onError={(e) => { e.currentTarget.src = `https://picsum.photos/seed/${category.id}/800/600`; }}
+            />
+          </div>
+        </div>
+        
+        <div className="relative mt-16 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+          <div className="absolute inset-0 bg-[url('/hero-bg.webp')] bg-fixed bg-cover bg-center opacity-30"></div>
+          <div className="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm"></div>
           
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <Shield className="text-brand-red" /> Beneficios y Servicios Específicos
+          <div className="relative z-10 grid md:grid-cols-2 gap-16 p-10 lg:p-16">
+            <div className={!category.brands ? "md:col-span-2" : ""}>
+              <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                <Shield className="text-brand-red w-8 h-8" /> Servicios que ofrecemos
               </h2>
-              <ul className="space-y-4">
+              <ul className={`space-y-6 ${!category.brands ? 'md:grid md:grid-cols-2 md:gap-6 md:space-y-0' : ''}`}>
                 {category.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-3 text-white/80 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
-                    <CheckCircle2 className="w-5 h-5 text-brand-red shrink-0" />
-                    <span className="font-medium">{item}</span>
+                  <li key={j} className="flex items-center gap-5 text-white/90 bg-white/5 p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors shadow-lg">
+                    <div className="bg-brand-dark p-3 rounded-xl border border-white/5 shrink-0">
+                      {getServiceIcon(item)}
+                    </div>
+                    <span className="font-bold text-xl">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             
-            <div>
-              {category.brands && (
+            {category.brands && (
+              <div>
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <CheckCircle2 className="text-brand-red" /> Integración con Marcas Líderes
+                  <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                    <Globe className="text-brand-red w-8 h-8" /> Integración con Marcas
                   </h2>
-                  <div className="bg-brand-dark p-6 rounded-xl border border-white/10 overflow-hidden">
-                    <p className="text-white/80 leading-relaxed mb-6">
+                  <div className="bg-white/5 py-12 rounded-3xl border border-white/10 overflow-hidden relative shadow-lg">
+                    <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-brand-dark/80 to-transparent z-10"></div>
+                    <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-brand-dark/80 to-transparent z-10"></div>
+                    <p className="text-white/80 leading-relaxed mb-10 text-lg px-8 text-center">
                       Trabajamos con los líderes de la industria para garantizar la máxima calidad, confiabilidad y transferir autoridad a su infraestructura:
                     </p>
-                    <div className="relative w-full flex overflow-hidden mask-edges h-20">
-                      <div className="flex gap-6 animate-marquee whitespace-nowrap items-center">
-                        {[...Array(2)].map((_, loopIndex) => (
-                          <React.Fragment key={loopIndex}>
-                            {category.brands.split(', ').map((brand, bIndex) => (
-                              <div key={`${loopIndex}-${bIndex}`} className="bg-white/5 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 min-w-[160px] border border-white/10">
-                                <BrandLogo brand={brand} className="h-8 w-auto max-w-[120px]" />
-                              </div>
-                            ))}
-                          </React.Fragment>
-                        ))}
+                    {category.brands.split(', ').length > 1 ? (
+                      <div className="relative w-full flex overflow-hidden h-24">
+                        <div className="flex gap-16 animate-marquee whitespace-nowrap items-center">
+                          {[...Array(3)].map((_, loopIndex) => (
+                            <React.Fragment key={loopIndex}>
+                              {category.brands.split(', ').map((brand, bIndex) => (
+                                <BrandLogo key={`${loopIndex}-${bIndex}`} brand={brand} className="shrink-0 h-16" />
+                              ))}
+                            </React.Fragment>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="flex justify-center items-center h-24">
+                        <BrandLogo brand={category.brands} className="h-20" />
+                      </div>
+                    )}
                   </div>
                 </div>
-              )}
-              
-              <div className="mt-8">
-                <Link to={`/?service=${encodeURIComponent(category.title)}#contacto`} className="w-full bg-brand-red hover:bg-red-700 text-[#ffffff] py-4 rounded-xl font-black text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-red/20 cursor-pointer">
-                  {category.ctaText}
-                </Link>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

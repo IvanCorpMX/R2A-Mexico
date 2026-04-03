@@ -46,6 +46,21 @@
   @apply bg-brand-gray backdrop-blur-md border border-brand-silver/20;
 }
 
+.logo-silhouette {
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.light-mode .logo-silhouette {
+  filter: brightness(0);
+}
+
+.logo-silhouette:hover, .light-mode .logo-silhouette:hover {
+  filter: none;
+  opacity: 1;
+}
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
