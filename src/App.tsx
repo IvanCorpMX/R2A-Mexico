@@ -473,9 +473,11 @@ const SolutionsSection = () => {
               <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                 {cat.icon}
               </div>
-              <h3 className="text-lg xl:text-xl font-bold mb-4 flex items-center justify-between gap-2">
-                <span className="whitespace-nowrap tracking-tighter">{cat.title}</span>
-                <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-brand-red group-hover:translate-x-1 transition-all shrink-0" />
+              <h3 className="text-lg xl:text-xl font-bold mb-4 flex items-start justify-between gap-2">
+                <span className={cat.title === 'Torres de Telecomunicaciones' ? 'leading-tight' : 'whitespace-nowrap tracking-tighter'}>
+                  {cat.title}
+                </span>
+                <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-brand-red group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </h3>
               <p className="text-white/60 text-sm mb-8 flex-grow leading-relaxed">
                 {cat.cardDesc}
