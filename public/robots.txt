@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /servicios/
+Allow: /broker-telecom
+Allow: /ciberseguridad
+Disallow: /api/
+Disallow: /config/
+Disallow: /admin/
+Disallow: /*?*
+
+Sitemap: https://www.r2amexico.com/sitemap.xml

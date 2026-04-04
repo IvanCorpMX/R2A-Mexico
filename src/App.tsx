@@ -373,9 +373,10 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src="/fondoprincipal.webp" 
-          alt="Security Infrastructure" 
+          alt="Infraestructura de Seguridad y Telecomunicaciones en Villahermosa - R2A México" 
           className="w-full h-full object-cover opacity-30"
           referrerPolicy="no-referrer"
+          fetchPriority="high"
           onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/telecommunications-tower/1920/1080?grayscale"; }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
@@ -389,8 +390,8 @@ const Hero = () => {
           className="max-w-2xl"
         >
           <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
-            SEGURIDAD, CONTROL Y <br />
-            <span className="text-brand-red">MONITOREO EN TIEMPO REAL</span>
+            SOLUCIONES INTEGRALES EN <br />
+            <span className="text-brand-red">SEGURIDAD ELECTRÓNICA DESDE EL SUR DE MÉXICO</span>
           </h1>
           <p className="text-xl text-white/60 mb-12 leading-relaxed">
             R2A México S.A. de C.V. inicia operaciones en el año 2014 con el propósito de asegurar su entorno, ofrecemos soluciones en seguridad electrónica a nivel físico y lógico.
@@ -439,10 +440,10 @@ const AboutSection = () => {
           </div>
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-6">
-              <img src="/objetivo1.webp" alt="Equipo R2A" className="rounded-2xl object-cover h-[400px] w-full shadow-2xl" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team1/400/600"; }} />
+              <img src="/objetivo1.webp" alt="Equipo de expertos en seguridad electrónica en Villahermosa - R2A México" className="rounded-2xl object-cover h-[400px] w-full shadow-2xl" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team1/400/600"; }} />
             </div>
             <div className="space-y-6 pt-16">
-              <img src="/objetivo2.webp" alt="Instalación R2A" className="rounded-2xl object-cover h-[400px] w-full shadow-2xl" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team2/400/600"; }} />
+              <img src="/objetivo2.webp" alt="Instalación de cámaras de seguridad y telecomunicaciones en el Sureste - R2A México" className="rounded-2xl object-cover h-[400px] w-full shadow-2xl" referrerPolicy="no-referrer" onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/r2a-team2/400/600"; }} />
             </div>
           </div>
         </div>
@@ -458,7 +459,7 @@ const SolutionsSection = () => {
     <section id="soluciones" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-black mb-4">NUESTRAS <span className="text-brand-red">SOLUCIONES</span></h2>
+          <h2 className="text-3xl md:text-5xl font-black mb-4">NUESTRAS <span className="text-brand-red">SOLUCIONES EN SEGURIDAD</span></h2>
           <p className="text-white/50 max-w-2xl mx-auto">Contamos con el personal eficiente y certificado para brindar soluciones integrales en seguridad electrónica y telecomunicaciones.</p>
         </div>
 
@@ -533,7 +534,7 @@ const BrokerTelecomSection = () => {
       <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full">
         <img 
           src="/brokertelecomimagen.webp" 
-          alt="Torre de Telecomunicaciones" 
+          alt="Integración de servicios Broker Telecom en Villahermosa - R2A México" 
           className="absolute inset-0 w-full h-full object-cover"
           referrerPolicy="no-referrer"
           onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/telecom-tower/1000/800"; }}
@@ -561,7 +562,7 @@ const CiberseguridadSection = () => {
       <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full order-2 lg:order-1">
         <img 
           src="/ciberseguridadimagen.webp" 
-          alt="Centro de Operaciones de Ciberseguridad" 
+          alt="Centro de Operaciones de Ciberseguridad SOC en México - R2A México" 
           className="absolute inset-0 w-full h-full object-cover"
           referrerPolicy="no-referrer"
           onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/cybersecurity/1000/800"; }}
@@ -647,7 +648,7 @@ const ContactForm = () => {
               Estamos listos para diseñar la solución que necesitas. Agenda una reunión directamente en nuestro calendario o contáctanos a través de nuestros canales oficiales.
             </p>
 
-            <div className="space-y-8">
+            <address className="space-y-8 not-italic">
               <div className="flex items-center gap-6">
                 <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-red">
                   <Phone />
@@ -666,7 +667,7 @@ const ContactForm = () => {
                   <p className="text-xl font-bold">ventas@r2a.com.mx</p>
                 </div>
               </div>
-            </div>
+            </address>
 
             <div className="mt-12">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
