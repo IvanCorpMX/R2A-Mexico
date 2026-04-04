@@ -473,8 +473,8 @@ const SolutionsSection = () => {
               <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                 {cat.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 flex items-center justify-between gap-2">
-                <span className="break-words min-w-0">{cat.title}</span>
+              <h3 className="text-lg xl:text-xl font-bold mb-4 flex items-center justify-between gap-2">
+                <span className="whitespace-nowrap tracking-tighter">{cat.title}</span>
                 <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-brand-red group-hover:translate-x-1 transition-all shrink-0" />
               </h3>
               <p className="text-white/60 text-sm mb-8 flex-grow leading-relaxed">
@@ -507,41 +507,44 @@ const SolutionsSection = () => {
 const BrokerTelecomSection = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-24 bg-brand-dark border-y border-white/10 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-black/20 skew-x-12 translate-x-1/4"></div>
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6">
-              <Globe className="w-3 h-3" /> División Especializada
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-6">
-              BROKER <span className="text-brand-red">TELECOM</span>
-            </h2>
-            <p className="text-white/70 text-lg mb-8 leading-relaxed">
-              Integración y comercialización de servicios de telecomunicaciones sobre carriers autorizados en México, agregando gestión, seguridad y continuidad operativa.
-            </p>
-            <button 
-              onClick={() => navigate('/broker-telecom')}
-              className="bg-white text-brand-dark hover:bg-gray-200 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer"
-            >
-              VER SERVICIOS TELECOM
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
+    <section className="relative bg-brand-dark border-y border-white/10 overflow-hidden flex flex-col lg:flex-row min-h-[80vh]">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-12 lg:p-24 relative z-10">
+        <div className="max-w-xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6">
+            <Globe className="w-3 h-3" /> División Especializada
           </div>
-          <div className="relative">
-            <div className="aspect-video rounded-3xl overflow-hidden border-8 border-white/10 shadow-2xl">
-              <img 
-                src="/brokertelecomimagen.webp" 
-                alt="Torre de Telecomunicaciones" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-                onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/telecom-tower/1000/600"; }}
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-brand-red p-6 rounded-2xl shadow-2xl text-white max-w-[280px]">
-              <p className="text-xl font-black mb-1 leading-tight">SLA respaldado por los mejores carries de Mexico</p>
-            </div>
+          <h2 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+            BROKER <br/><span className="text-brand-red">TELECOM</span>
+          </h2>
+          <p className="text-white/70 text-xl mb-10 leading-relaxed">
+            Integración y comercialización de servicios de telecomunicaciones sobre carriers autorizados en México, agregando gestión, seguridad y continuidad operativa.
+          </p>
+          <button 
+            onClick={() => navigate('/broker-telecom')}
+            className="bg-white text-brand-dark hover:bg-gray-200 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer text-lg"
+          >
+            VER SERVICIOS TELECOM
+            <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </div>
+      <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full">
+        <img 
+          src="/brokertelecomimagen.webp" 
+          alt="Torre de Telecomunicaciones" 
+          className="absolute inset-0 w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+          onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/telecom-tower/1000/800"; }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent lg:bg-gradient-to-r lg:from-brand-dark lg:via-brand-dark/20 lg:to-transparent"></div>
+        
+        <div className="absolute bottom-10 right-10 lg:bottom-16 lg:right-16 bg-brand-dark/80 backdrop-blur-md p-6 rounded-3xl border border-white/10 shadow-2xl max-w-[340px] flex items-start gap-5 group hover:bg-brand-dark transition-colors">
+          <div className="w-16 h-16 bg-brand-red rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-brand-red/20 group-hover:scale-110 transition-transform">
+            <ShieldCheck className="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <p className="text-3xl font-black text-white mb-1 leading-none">99.9%</p>
+            <p className="text-xs text-white/70 font-bold uppercase tracking-widest mt-2">SLA Garantizado</p>
           </div>
         </div>
       </div>
@@ -552,43 +555,45 @@ const BrokerTelecomSection = () => {
 const CiberseguridadSection = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-24 bg-brand-gray border-b border-white/10 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-1/2 h-full bg-black/20 -skew-x-12 -translate-x-1/4"></div>
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1 relative">
-            <div className="aspect-video rounded-3xl overflow-hidden border-8 border-white/10 shadow-2xl">
-              <img 
-                src="/ciberseguridadimagen.webp" 
-                alt="Centro de Operaciones de Ciberseguridad" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-                onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/cybersecurity/1000/600"; }}
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-6 bg-brand-red p-6 rounded-2xl shadow-2xl text-white">
-              <p className="text-3xl font-black mb-1">24/7</p>
-              <p className="text-xs font-bold uppercase tracking-widest opacity-80">Monitoreo Continuo</p>
-            </div>
+    <section className="relative bg-brand-gray border-b border-white/10 overflow-hidden flex flex-col lg:flex-row min-h-[80vh]">
+      <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full order-2 lg:order-1">
+        <img 
+          src="/ciberseguridadimagen.webp" 
+          alt="Centro de Operaciones de Ciberseguridad" 
+          className="absolute inset-0 w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+          onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/cybersecurity/1000/800"; }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-gray via-transparent to-transparent lg:bg-gradient-to-l lg:from-brand-gray lg:via-brand-gray/20 lg:to-transparent"></div>
+        
+        <div className="absolute bottom-10 left-10 lg:bottom-16 lg:left-16 bg-brand-dark/80 backdrop-blur-md p-6 rounded-3xl border border-white/10 shadow-2xl flex items-center gap-5 group hover:bg-brand-dark transition-colors">
+          <div className="w-16 h-16 bg-brand-red rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-brand-red/20 group-hover:scale-110 transition-transform">
+            <Activity className="w-8 h-8 text-white" />
           </div>
-          <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6">
-              <ShieldCheck className="w-3 h-3" /> División Especializada
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-6">
-              CIBER<span className="text-brand-red">SEGURIDAD</span>
-            </h2>
-            <p className="text-white/70 text-lg mb-8 leading-relaxed">
-              Protección integral para su infraestructura digital. Prevención de amenazas, análisis de vulnerabilidades y respuesta a incidentes para garantizar la continuidad de su negocio.
-            </p>
-            <button 
-              onClick={() => navigate('/ciberseguridad')}
-              className="bg-brand-red text-[#ffffff] hover:bg-red-700 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer shadow-lg shadow-brand-red/20"
-            >
-              VER SERVICIOS DE CIBERSEGURIDAD
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
+          <div>
+            <p className="text-3xl font-black text-white mb-0 leading-none">24/7</p>
+            <p className="text-sm text-white/70 font-bold uppercase tracking-widest mt-1">Monitoreo Continuo</p>
           </div>
+        </div>
+      </div>
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-12 lg:p-24 relative z-10 order-1 lg:order-2">
+        <div className="max-w-xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6">
+            <ShieldCheck className="w-3 h-3" /> División Especializada
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+            CIBER<br/><span className="text-brand-red">SEGURIDAD</span>
+          </h2>
+          <p className="text-white/70 text-xl mb-10 leading-relaxed">
+            Protección integral para su infraestructura digital. Prevención de amenazas, análisis de vulnerabilidades y respuesta a incidentes para garantizar la continuidad de su negocio.
+          </p>
+          <button 
+            onClick={() => navigate('/ciberseguridad')}
+            className="bg-brand-red text-[#ffffff] hover:bg-red-700 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all group cursor-pointer shadow-lg shadow-brand-red/20 text-lg"
+          >
+            VER SERVICIOS DE CIBERSEGURIDAD
+            <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
       </div>
     </section>
@@ -985,9 +990,11 @@ const BrokerTelecomPage = () => {
                   <AlertTriangle className="text-brand-red" />
                   <span className="font-bold">Red monitoreada 7x24x365 (NOC)</span>
                 </div>
-                <div className="flex items-center gap-4 bg-brand-red/10 p-4 rounded-xl border border-brand-red/20">
-                  <CheckCircle2 className="text-brand-red" />
-                  <span className="font-bold text-xl text-brand-red">99.9% SLA</span>
+                <div className="flex items-center gap-5 bg-gradient-to-br from-brand-red/20 to-brand-red/5 p-5 rounded-2xl border border-brand-red/30 shadow-lg shadow-brand-red/5 transition-transform hover:-translate-y-1">
+                  <div className="bg-brand-red p-3 rounded-xl shrink-0 shadow-lg shadow-brand-red/20">
+                    <ShieldCheck className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="font-black text-lg text-white leading-tight">SLA respaldado por los mejores carriers de México</span>
                 </div>
               </div>
             </div>
@@ -1321,8 +1328,8 @@ const SolutionPage = () => {
         </div>
         
         <div className="relative mt-16 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-          <div className="absolute inset-0 bg-[url('/hero-bg.webp')] bg-fixed bg-cover bg-center opacity-30"></div>
-          <div className="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-[url('/hero-bg.webp')] bg-fixed bg-cover bg-center opacity-100"></div>
+          <div className="absolute inset-0 bg-brand-dark/70 backdrop-blur-sm"></div>
           
           <div className="relative z-10 grid md:grid-cols-2 gap-16 p-10 lg:p-16">
             <div className={!category.brands ? "md:col-span-2" : ""}>
