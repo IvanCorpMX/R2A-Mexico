@@ -8,4 +8,4 @@ Disallow: /config/
 Disallow: /admin/
 Disallow: /*?*
 
-Sitemap: https://www.r2amexico.com/sitemap.xml
+Sitemap: https://r2a.com.mx/sitemap.xml

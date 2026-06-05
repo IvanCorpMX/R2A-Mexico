@@ -1,51 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.r2amexico.com/</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.r2amexico.com/servicios/seguridad-electronica</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx/servicios/sistemas-de-automatizacion-sureste-mexicano</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.r2amexico.com/servicios/radiocomunicacion</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx/servicios/sistemas-de-radiocomunicacion-villahermosa</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.r2amexico.com/servicios/telecomunicaciones</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx/servicios/sistemas-de-videovigilancia-industrial-sur-de-mexico</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.r2amexico.com/servicios/torres-de-telecomunicaciones</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx/servicios/rastreo-gps-monitoreo-flotas-sureste</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.r2amexico.com/broker-telecom</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx/servicios/enlaces-dedicados-inalambricos-villahermosa</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.r2amexico.com/ciberseguridad</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx/servicios/soluciones-audiovisuales-corporativas-sureste</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.r2amexico.com/#contacto</loc>
-    <lastmod>2026-04-04</lastmod>
+    <loc>https://r2a.com.mx/servicios/torres-de-telecomunicaciones-villahermosa</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://r2a.com.mx/servicios/sistemas-de-telemetria-industrial-sureste</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bt.r2a.com.mx</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://r2a.com.mx/ciberseguridad</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://r2a.com.mx/aviso-de-privacidad</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
