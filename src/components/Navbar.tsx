@@ -122,8 +122,7 @@ export const Navbar = () => {
           ))}
           <a 
             href="/brochure.pdf" 
-            target="_blank"
-            rel="noopener noreferrer"
+            download="Brochure_R2A_Mexico.pdf"
             className="bg-brand-red hover:bg-red-700 text-[#ffffff] px-5 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2"
           >
             <Download className="w-4 h-4" /> BROCHURE
@@ -177,8 +176,7 @@ export const Navbar = () => {
               ))}
               <a 
                 href="/brochure.pdf" 
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Brochure_R2A_Mexico.pdf"
                 className="bg-brand-red text-[#ffffff] text-center py-3 rounded-lg font-bold flex items-center justify-center gap-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
