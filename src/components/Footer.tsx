@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Twitter, Video, Mail } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Twitter, Video, Mail, Phone } from 'lucide-react';
 
 export const Footer = () => {
   const location = useLocation();
@@ -112,6 +112,7 @@ export const Footer = () => {
             <div>
               <h4 className="font-bold mb-6 uppercase tracking-widest text-xs text-brand-red">Contacto</h4>
               <ul className="space-y-4 text-sm text-white/40">
+                <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> +52 55 7877 7227</li>
                 <li className="flex items-center gap-2"><Mail className="w-4 h-4" /> ventas@r2a.com.mx</li>
               </ul>
             </div>
