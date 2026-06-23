@@ -62,17 +62,16 @@ export const BrokerTelecomPage = () => {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/10 border border-brand-red/20 text-brand-red text-xs font-bold tracking-widest uppercase mb-4">
                 <Globe className="w-3 h-3" /> División Especializada
               </div>
-              <div className="mt-2">
+              <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-4">
                 <img 
                   src="/images/logos/broker-telecom.png" 
                   alt="Broker Telecom" 
-                  className="h-12 md:h-16 w-auto object-contain"
+                  className="h-12 md:h-16 w-auto object-contain shrink-0"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
-                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
                   }}
                 />
-                <h1 className="hidden text-4xl md:text-6xl font-black">
+                <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight">
                   BROKER <span className="text-brand-red">TELECOM</span>
                 </h1>
               </div>
@@ -112,7 +111,7 @@ export const BrokerTelecomPage = () => {
               <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-red mb-6">
                 <Radio className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Servicios Best Effort</h3>
+              <h3 className="text-2xl font-bold mb-4">Servicios de Conectividad Empresarial</h3>
               <p className="text-white/60 leading-relaxed">
                 El mejor servicio disponible que resuelve los problemas de conectividad en tu empresa.
               </p>
@@ -136,7 +135,7 @@ export const BrokerTelecomPage = () => {
                   <React.Fragment key={i}>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="/logos/alestra.png" 
+                        src="/images/logos/alestra.png" 
                         alt="Alestra" 
                         className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
@@ -148,7 +147,7 @@ export const BrokerTelecomPage = () => {
                     </div>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="/logos/metrocarrier.png" 
+                        src="/images/logos/metrocarrier.png" 
                         alt="MetroCarrier" 
                         className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
@@ -160,7 +159,7 @@ export const BrokerTelecomPage = () => {
                     </div>
                     <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-xl flex items-center justify-center shrink-0 h-16 w-64">
                       <img 
-                        src="/logos/net2phone.png" 
+                        src="/images/logos/net2phone.png" 
                         alt="net2phone" 
                         className="max-h-8 max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity" 
                         onError={(e) => { 
@@ -198,8 +197,28 @@ export const BrokerTelecomPage = () => {
             <div>
               <h3 className="text-2xl font-bold mb-6 text-brand-red">Contacto Directo</h3>
               <ul className="space-y-4 text-white/80">
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 55 1034 8105</li>
-                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-brand-red" /> +52 55 7877 7227</li>
+                <li className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-brand-red shrink-0" />
+                  <a href="tel:+525593373833" className="hover:text-brand-red transition-colors font-medium">
+                    +52 559 337 3833
+                  </a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-[#25D366] shrink-0 fill-current" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.46h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <a href="https://wa.me/525578777227" target="_blank" rel="noopener noreferrer" className="hover:text-brand-red transition-colors font-medium">
+                    +52 55 7877 7227
+                  </a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-[#25D366] shrink-0 fill-current" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.46h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <a href="https://wa.me/525548788178" target="_blank" rel="noopener noreferrer" className="hover:text-brand-red transition-colors font-medium">
+                    +52 55 4878 8178
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

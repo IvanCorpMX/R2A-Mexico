@@ -4,7 +4,7 @@ import { Phone, Mail, Globe } from 'lucide-react';
 
 export const ContactForm = () => {
   const location = useLocation();
-  const [activeMap, setActiveMap] = useState<'villahermosa' | 'tuxtla'>('villahermosa');
+  const [activeMap, setActiveMap] = useState<'villahermosa' | 'tuxtla'>('tuxtla');
   const [isIframeVisible, setIsIframeVisible] = useState(false);
   const iframeContainerRef = useRef<HTMLDivElement>(null);
 
@@ -54,7 +54,12 @@ export const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Llámanos</p>
-                  <p className="text-xl font-bold">+52 993 351 1828</p>
+                  <a 
+                    href={`tel:${activeMap === 'tuxtla' ? '+529619802193' : '+529933511828'}`} 
+                    className="text-xl font-bold hover:text-brand-red transition-colors block"
+                  >
+                    {activeMap === 'tuxtla' ? '+52 961 980 2193' : '+52 993 351 1828'}
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-6">
